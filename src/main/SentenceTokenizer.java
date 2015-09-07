@@ -2,84 +2,45 @@ package main;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import jmdn.base.util.string.StrUtil;
-import resources.Regex;
 
 public class SentenceTokenizer {
-	private static Pattern pattern;
-	private static Matcher matcher;
+	private static final String[] eos = {".", "?", "!", "EOS"};
 	
-	public static List<String> tokenize(String line) {
+	public static List<String> tokenize(List<String> words) {
 		List<String> sentences = new ArrayList<>();
-		String tempSentence = "";
 		
-		for (int i = 0; i < line.length(); i++) {
-			Character character = line.charAt(i);
-			tempSentence += character;
-			
-			if (character.equals('?') || character.equals('!')) {
-				sentences.add(StrUtil.normalizeString(tempSentence));
-				tempSentence = "";
-			} else if (character.equals('.')) {
-				i++;
-				if (i == line.length()) {
-					sentences.add(StrUtil.normalizeString(tempSentence));
-					tempSentence = "";
-					break;
-				} else {
-					Character nextChar = line.charAt(i);
-					if (nextChar.equals(' ') && !tempSentence.endsWith("...")) {
-						sentences.add(StrUtil.normalizeString(tempSentence));
-						tempSentence = "";
-						continue;
-					}
-					
-					String sentence = tempSentence;
-					
-					while (!nextChar.equals(' ')) {
-						tempSentence += nextChar;
-						i++;
-						if (i == line.length()) break;
-						nextChar = line.charAt(i);
-					}
-					
-					String lastPhrase = tempSentence;
-					int index = tempSentence.lastIndexOf(' ');
-					if (index != -1) {
-						lastPhrase = lastPhrase.substring(index);	
-					}
-					
-					i--;
-					
-					//	Catch ... exception
-					if (lastPhrase.endsWith("...")) continue;
-					
-					//	Catch number exception
-					pattern = Pattern.compile(Regex.NUMBER);
-					matcher = pattern.matcher(lastPhrase);
-					if (matcher.find()) continue;
-					
-					//	Catch url exception
-					pattern = Pattern.compile(Regex.URL);
-					matcher = pattern.matcher(lastPhrase);
-					if (matcher.find()) continue;
-					
-					//	Catch email exception
-					pattern = Pattern.compile(Regex.EMAIL);
-					matcher = pattern.matcher(lastPhrase);
-					if (matcher.find()) continue;
-					
-					sentences.add(StrUtil.normalizeString(sentence));
-					tempSentence = "";
-				}
+		List<String> sentence = new ArrayList<>();
+		for (String word : words) {
+			sentence.add(word);
+			if (isEOS(word)) {
+				if (word.equals("EOS")) sentence.remove(sentence.size() - 1);
+				sentences.add(normalizeSentence(StrUtil.normalizeString(StrUtil.join(sentence))));
+				sentence.clear();
 			}
 		}
 		
-		if (tempSentence.length() > 0) sentences.add(StrUtil.normalizeString(tempSentence));
-		
 		return sentences;
+	}
+	
+	private static String normalizeSentence(String sentence) {
+		sentence = sentence.replace("( ", "(");
+		sentence = sentence.replace(" )", ")");
+		sentence = sentence.replace(" ,", ",");
+		sentence = sentence.replace(" :", ":");
+		sentence = sentence.replace(" ?", "?");
+		sentence = sentence.replace(" !", "!");
+		if (sentence.endsWith(" .")) sentence = sentence.substring(0, sentence.length() - 2) + ".";
+		
+		return sentence;
+	}
+	
+	private static boolean isEOS(String word) {
+		for (String c : eos) {
+			if (word.equals(c)) return true;
+		}
+		
+		return false;
 	}
 }

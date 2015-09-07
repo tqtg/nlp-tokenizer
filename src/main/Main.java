@@ -40,23 +40,22 @@ public class Main {
 		List<String> dataLines = FileLoader.readFile(cmdOption.filename, ENCODING);
 		System.out.println("Total lines: " + dataLines.size());
 		
-		//	Sentences tokenization
-		List<String> sentences = new ArrayList<>();
+		//	Words tokenization
+		List<String> words = new ArrayList<>();
 		for (String line : dataLines) {
-			sentences.addAll(SentenceTokenizer.tokenize(StrUtil.normalizeString(line)));
+			words.addAll(WordTokenizer.tokenize(StrUtil.normalizeString(line)));
 		}
+		
+		//	Sentences tokenization
+		List<String> sentences = SentenceTokenizer.tokenize(words);
 		
 		FileSaver.saveListString(sentences, "../data/sentences.txt", ENCODING);
 		System.out.println("Total sentences: " + sentences.size());
 		
-		//	Words tokenization
-		List<String> words = new ArrayList<>();
-		for (String sentence : sentences) {
-			words.addAll(WordTokenizer.tokenize(StrUtil.normalizeString(sentence)));
-		}
-		
+		while (words.contains("EOS")) words.remove("EOS");
 		FileSaver.saveListString(words, "../data/words.txt", ENCODING);
 		System.out.println("Total words: " + words.size());
+		
 	}
 
 	public static void showHelp(CmdLineParser parser) {
