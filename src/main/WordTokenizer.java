@@ -47,14 +47,14 @@ public class WordTokenizer {
 			Matcher matcher = pattern.matcher(token);
 			if (matcher.find()) {
 				token = token.replace(matcher.group(), " " + matcher.group() + " ");
-			}
-			
-			pattern = Pattern.compile(Regex.URL);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				token = token.replace(matcher.group(), " " + matcher.group() + " ");
 			} else {
-				token = token.replace("/", " / ");
+				pattern = Pattern.compile(Regex.URL);
+				matcher = pattern.matcher(token);
+				if (matcher.find()) {
+					token = token.replace(matcher.group(), " " + matcher.group() + " ");
+				} else {
+					token = token.replace("/", " / ");
+				}
 			}
 			
 			if (token.endsWith("...") && token.length() > 3) token = token.substring(0, token.length() - 3) + " ...";

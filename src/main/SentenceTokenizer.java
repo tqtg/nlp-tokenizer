@@ -31,7 +31,19 @@ public class SentenceTokenizer {
 		sentence = sentence.replace(" :", ":");
 		sentence = sentence.replace(" ?", "?");
 		sentence = sentence.replace(" !", "!");
+		sentence = sentence.replace(" / ", "/");
 		if (sentence.endsWith(" .")) sentence = sentence.substring(0, sentence.length() - 2) + ".";
+		
+		boolean removeLeft = false;
+		while(sentence.contains(" \" ")) {
+			if (removeLeft) {
+				sentence = sentence.replaceFirst(" \" ", "\" ");
+				removeLeft = false;
+			} else {
+				sentence = sentence.replaceFirst(" \" ", " \"");
+				removeLeft = true;
+			}
+		}
 		
 		return sentence;
 	}
