@@ -8,6 +8,7 @@ import org.kohsuke.args4j.CmdLineParser;
 
 import jmdn.base.util.filesystem.FileLoader;
 import jmdn.base.util.filesystem.FileSaver;
+import jmdn.base.util.string.StrUtil;
 
 public class Main {
 	private static final String ENCODING = "UTF8";
@@ -42,18 +43,20 @@ public class Main {
 		//	Sentences tokenization
 		List<String> sentences = new ArrayList<>();
 		for (String line : dataLines) {
-			sentences.addAll(SentenceTokenizer.tokenize(line));
+			sentences.addAll(SentenceTokenizer.tokenize(StrUtil.normalizeString(line)));
 		}
 		
 		FileSaver.saveListString(sentences, "../data/sentences.txt", ENCODING);
+		System.out.println("Total sentences: " + sentences.size());
 		
 		//	Words tokenization
 		List<String> words = new ArrayList<>();
 		for (String sentence : sentences) {
-			words.addAll(WordTokenizer.tokenize(sentence));
+			words.addAll(WordTokenizer.tokenize(StrUtil.normalizeString(sentence)));
 		}
 		
 		FileSaver.saveListString(words, "../data/words.txt", ENCODING);
+		System.out.println("Total words: " + words.size());
 	}
 
 	public static void showHelp(CmdLineParser parser) {
