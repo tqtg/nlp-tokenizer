@@ -39,13 +39,21 @@ public class Main {
 		List<String> dataLines = FileLoader.readFile(cmdOption.filename, ENCODING);
 		System.out.println("Total lines: " + dataLines.size());
 		
+		//	Sentences tokenization
 		List<String> sentences = new ArrayList<>();
-		
 		for (String line : dataLines) {
 			sentences.addAll(SentenceTokenizer.tokenize(line));
 		}
 		
-		FileSaver.saveListString(sentences, "sentences.txt", ENCODING);
+		FileSaver.saveListString(sentences, "../data/sentences.txt", ENCODING);
+		
+		//	Words tokenization
+		List<String> words = new ArrayList<>();
+		for (String sentence : sentences) {
+			words.addAll(WordTokenizer.tokenize(sentence));
+		}
+		
+		FileSaver.saveListString(words, "../data/words.txt", ENCODING);
 	}
 
 	public static void showHelp(CmdLineParser parser) {
