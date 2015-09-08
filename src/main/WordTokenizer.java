@@ -10,7 +10,7 @@ import resources.Dictionay;
 import resources.Regex;
 
 public class WordTokenizer {
-	private static final String[] specialChar = {";", ":", "?", "!", "_", "\"", "'","\\", "[", "]", "{", "}"};
+	private static final String[] specialChar = {";", ":", "?", "!", "_", "\"", "'","\\", "[", "]", "{", "}", "‘", "’", "“", "”", "*"};
 	private static final String[] eos = {".", "?", "!"};
 	
 	public static List<String> tokenize(String line) {
