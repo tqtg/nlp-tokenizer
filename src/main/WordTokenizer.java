@@ -34,7 +34,12 @@ public class WordTokenizer {
 			if (Dictionay.isException(token)) {
 				words.add(token);
 				continue;
-			} 
+			}
+			
+			if (token.matches(Regex.DATE)) {
+				words.add(token);
+				continue;
+			}
 			
 			if (token.matches(Regex.PHONE_NUMBER)) {
 				words.add(token);
@@ -56,18 +61,18 @@ public class WordTokenizer {
 				if (matcher.find()) {
 					token = token.replace(matcher.group(), " " + matcher.group() + " ");
 				} else {
-					token = token.replace("/", " / ");
-					
 					pattern = Pattern.compile(Regex.NUMBER);
 					matcher = pattern.matcher(token);
 					if (!matcher.find()) {
 						token = token.replace(",", " , ");
+						token = token.replace("/", " / ");
 					}
 				}
 			}
 			
 			if (token.endsWith("...") && token.length() > 3) token = token.substring(0, token.length() - 3) + " ...";
 			else if (token.endsWith(".") && token.length() > 1) token = token.substring(0, token.length() - 1) + " .";
+			else if (token.endsWith(",") && token.length() > 1) token = token.substring(0, token.length() - 1) + " ,";
 			
 			words.addAll(StrUtil.tokenizeString(token, " "));
 		}

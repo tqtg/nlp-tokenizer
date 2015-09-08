@@ -16,7 +16,23 @@ public class SentenceTokenizer {
 			sentence.add(word);
 			if (isEOS(word)) {
 				if (word.equals("EOS")) sentence.remove(sentence.size() - 1);
-				sentences.add(normalizeSentence(StrUtil.normalizeString(StrUtil.join(sentence))));
+				sentences.add(normalizeSentence(StrUtil.join(sentence)));
+				sentence.clear();
+			}
+		}
+		
+		return sentences;
+	}
+	
+	public static List<String> tokenizeWithSeperatedTokens(List<String> words) {
+		List<String> sentences = new ArrayList<>();
+		
+		List<String> sentence = new ArrayList<>();
+		for (String word : words) {
+			sentence.add(word);
+			if (isEOS(word)) {
+				if (word.equals("EOS")) sentence.remove(sentence.size() - 1);
+				sentences.add(StrUtil.join(sentence, " | "));
 				sentence.clear();
 			}
 		}
@@ -25,6 +41,23 @@ public class SentenceTokenizer {
 	}
 	
 	private static String normalizeSentence(String sentence) {
+		boolean removeRight = true;
+		while(sentence.contains(" \" ")) {
+			if (removeRight) {
+				sentence = sentence.replaceFirst(" \" ", " \"");
+				removeRight = false;
+			} else {
+				sentence = sentence.replaceFirst(" \" ", "\" ");
+				removeRight = true;
+			}
+		}
+		if (sentence.endsWith(" \"")) sentence = sentence.substring(0, sentence.length() - 2) + "\"";
+		
+		sentence = sentence.replace("‘ ", "‘");
+		sentence = sentence.replace(" ’", "’");
+		sentence = sentence.replace("“ ", "“");
+		sentence = sentence.replace(" ”", "”");
+		
 		sentence = sentence.replace("( ", "(");
 		sentence = sentence.replace(" )", ")");
 		sentence = sentence.replace(" ,", ",");
@@ -32,20 +65,10 @@ public class SentenceTokenizer {
 		sentence = sentence.replace(" ?", "?");
 		sentence = sentence.replace(" !", "!");
 		sentence = sentence.replace(" / ", "/");
+		
 		if (sentence.endsWith(" .")) sentence = sentence.substring(0, sentence.length() - 2) + ".";
 		
-		boolean removeLeft = false;
-		while(sentence.contains(" \" ")) {
-			if (removeLeft) {
-				sentence = sentence.replaceFirst(" \" ", "\" ");
-				removeLeft = false;
-			} else {
-				sentence = sentence.replaceFirst(" \" ", " \"");
-				removeLeft = true;
-			}
-		}
-		
-		return sentence;
+		return StrUtil.normalizeString(sentence);
 	}
 	
 	private static boolean isEOS(String word) {

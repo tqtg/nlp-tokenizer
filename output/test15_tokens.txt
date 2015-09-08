@@ -1,4 +1,5 @@
-“Tôi
+“
+Tôi
 rất
 tiếc
 cho
@@ -20,7 +21,8 @@ thể
 lên
 ngôi
 vô
-địch”
+địch
+”
 ,
 ông
 chia
@@ -35,10 +37,12 @@ bóng
 đá
 thiếu
 nhi
-“Thách
+“
+Thách
 thức
 Lotteria
-Cup”
+Cup
+”
 mà
 ông
 là
@@ -79,7 +83,5 @@ toàn
 quốc
 sáng
 nay
-5
-/
-9
+5/9
 .

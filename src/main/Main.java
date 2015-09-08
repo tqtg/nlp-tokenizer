@@ -2,7 +2,14 @@ package main;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -88,29 +95,66 @@ public class Main {
 		List<String> sentences = SentenceTokenizer.tokenize(tokens);
 		long endSenTokTime = System.currentTimeMillis();
 		
+		List<String> sentencesWithSeperatedTokens = SentenceTokenizer.tokenizeWithSeperatedTokens(tokens);
+		
 		int i = filename.lastIndexOf("/");
 		if (i < 0) i = 0; 
 		filename = filename.substring(i, filename.lastIndexOf("."));
 		
+		//	Write sentences to file
 		FileSaver.saveListString(sentences, "../output/" + filename + "_sentences.txt", ENCODING);
+		FileSaver.saveListString(sentencesWithSeperatedTokens, "../output/" + filename + "_sentencesWithSeperatedTokens.txt", ENCODING);
 		System.out.println("Total sentences: " + sentences.size());
 		
+		//	Write tokens to file
 		while (tokens.contains("EOS")) tokens.remove("EOS");
 		FileSaver.saveListString(tokens, "../output/" + filename + "_tokens.txt", ENCODING);
 		System.out.println("Total tokens: " + tokens.size());
 		
-		List<String> words = new ArrayList<>();
+		//	Count frequency of words
+		Map<String, Integer> wordsFrequency = new HashMap<>();
 		for (String token : tokens) {
-			if (!words.contains(token)) words.add(token);
+			if (!wordsFrequency.containsKey(token)) wordsFrequency.put(token, 1);
+			else wordsFrequency.put(token, wordsFrequency.get(token) + 1);
 		}
-		FileSaver.saveListString(tokens, "../output/" + filename + "_words.txt", ENCODING);
+		Map<String, Integer> sortedMap = sortByComparator(wordsFrequency);
+		List<String> words = new ArrayList<>();
+		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+			words.add(entry.getKey() + " : " + entry.getValue());
+		}
+		
+		//	Write words frequency to file
+		FileSaver.saveListString(words, "../output/" + filename + "_wordsFrequency.txt", ENCODING);
 		System.out.println("Total words: " + words.size());
 		
+		//	Running time
 		System.out.println("Work tokenization time: " + String.valueOf(endWordTokTime - beginWordTokTime) + " ms");
 		System.out.println("Sentence tokenization time: " + String.valueOf(endSenTokTime - beginSenTokTime) + " ms");
-		
 		System.out.println("=========");
 	}
+	
+	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap) {
+		// Convert Map to List
+		List<Map.Entry<String, Integer>> list = 
+			new LinkedList<Map.Entry<String, Integer>>(unsortMap.entrySet());
+
+		// Sort list with comparator, to compare the Map values
+		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+			public int compare(Map.Entry<String, Integer> o1,
+                                           Map.Entry<String, Integer> o2) {
+				return (o2.getValue()).compareTo(o1.getValue());
+			}
+		});
+
+		// Convert sorted map back to a Map
+		Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
+		for (Iterator<Map.Entry<String, Integer>> it = list.iterator(); it.hasNext();) {
+			Map.Entry<String, Integer> entry = it.next();
+			sortedMap.put(entry.getKey(), entry.getValue());
+		}
+		return sortedMap;
+	}
+
 
 	public static void showHelp(CmdLineParser parser) {
 		parser.printUsage(System.out);

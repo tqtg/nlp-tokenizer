@@ -1,1 +1,0 @@
-Khi xuất lên youtube, video sẽ lưu thành một file duy nhất dưới định dang mp4, độ phân giải 960*720.
