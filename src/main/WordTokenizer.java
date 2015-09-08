@@ -10,7 +10,7 @@ import resources.Dictionay;
 import resources.Regex;
 
 public class WordTokenizer {
-	private static final String[] specialChar = {";", ":", "?", "!", "-", "+", "_", "\"", "'","\\", "(", ")", "[", "]", "{", "}"};
+	private static final String[] specialChar = {";", ":", "?", "!", "_", "\"", "'","\\", "[", "]", "{", "}"};
 	private static final String[] eos = {".", "?", "!"};
 	
 	public static List<String> tokenize(String line) {
@@ -41,6 +41,16 @@ public class WordTokenizer {
 				continue;
 			} else {
 				token = token.replace(",", " , ");
+			}
+			
+			if (token.matches(Regex.PHONE_NUMBER)) {
+				words.add(token);
+				continue;
+			} else {
+				token = token.replace("(", " ( ");
+				token = token.replace(")", " ) ");
+				token = token.replace("+", " + ");
+				token = token.replace("-", " - ");
 			}
 			
 			Pattern pattern = Pattern.compile(Regex.EMAIL);

@@ -73,21 +73,28 @@ public class Main {
 		System.out.println("Total lines: " + dataLines.size());
 		
 		//	Words tokenization
-		List<String> words = new ArrayList<>();
+		List<String> tokens = new ArrayList<>();
 		for (String line : dataLines) {
-			words.addAll(WordTokenizer.tokenize(StrUtil.normalizeString(line)));
+			tokens.addAll(WordTokenizer.tokenize(StrUtil.normalizeString(line)));
 		}
 		
 		//	Sentences tokenization
-		List<String> sentences = SentenceTokenizer.tokenize(words);
+		List<String> sentences = SentenceTokenizer.tokenize(tokens);
 		
 		filename = filename.substring(filename.lastIndexOf("/"), filename.lastIndexOf("."));
 		
 		FileSaver.saveListString(sentences, "../output/" + filename + "_sentences.txt", ENCODING);
 		System.out.println("Total sentences: " + sentences.size());
 		
-		while (words.contains("EOS")) words.remove("EOS");
-		FileSaver.saveListString(words, "../output/" + filename + "_words.txt", ENCODING);
+		while (tokens.contains("EOS")) tokens.remove("EOS");
+		FileSaver.saveListString(tokens, "../output/" + filename + "_tokens.txt", ENCODING);
+		System.out.println("Total tokens: " + tokens.size());
+		
+		List<String> words = new ArrayList<>();
+		for (String token : tokens) {
+			if (!words.contains(token)) words.add(token);
+		}
+		FileSaver.saveListString(tokens, "../output/" + filename + "_words.txt", ENCODING);
 		System.out.println("Total words: " + words.size());
 		
 		System.out.println("=========");
