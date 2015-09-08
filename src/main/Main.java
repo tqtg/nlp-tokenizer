@@ -38,6 +38,8 @@ public class Main {
 	}
 	
 	public static void perform(CmdOption cmdOption) {
+		long beginTime = System.currentTimeMillis();
+		
 		System.out.println("\n=========");
 		
 		File outputFolder = new File("../output");
@@ -50,6 +52,8 @@ public class Main {
 			tokenizeDirectory(file);
 		}
 		
+		long endTime = System.currentTimeMillis();
+		System.out.println("\nTotal runtime: " + String.valueOf(endTime - beginTime) + " ms");
 	}
 	
 	public static void tokenizeDirectory(File dir) {
@@ -68,20 +72,25 @@ public class Main {
 	}
 	
 	public static void tokenizeFile(String filename) {
-		
 		List<String> dataLines = FileLoader.readFile(filename, ENCODING);
 		System.out.println("Total lines: " + dataLines.size());
 		
 		//	Words tokenization
+		long beginWordTokTime = System.currentTimeMillis();
 		List<String> tokens = new ArrayList<>();
 		for (String line : dataLines) {
 			tokens.addAll(WordTokenizer.tokenize(StrUtil.normalizeString(line)));
 		}
+		long endWordTokTime = System.currentTimeMillis();
 		
 		//	Sentences tokenization
+		long beginSenTokTime = System.currentTimeMillis();
 		List<String> sentences = SentenceTokenizer.tokenize(tokens);
+		long endSenTokTime = System.currentTimeMillis();
 		
-		filename = filename.substring(filename.lastIndexOf("/"), filename.lastIndexOf("."));
+		int i = filename.lastIndexOf("/");
+		if (i < 0) i = 0; 
+		filename = filename.substring(i, filename.lastIndexOf("."));
 		
 		FileSaver.saveListString(sentences, "../output/" + filename + "_sentences.txt", ENCODING);
 		System.out.println("Total sentences: " + sentences.size());
@@ -96,6 +105,9 @@ public class Main {
 		}
 		FileSaver.saveListString(tokens, "../output/" + filename + "_words.txt", ENCODING);
 		System.out.println("Total words: " + words.size());
+		
+		System.out.println("Work tokenization time: " + String.valueOf(endWordTokTime - beginWordTokTime) + " ms");
+		System.out.println("Sentence tokenization time: " + String.valueOf(endSenTokTime - beginSenTokTime) + " ms");
 		
 		System.out.println("=========");
 	}

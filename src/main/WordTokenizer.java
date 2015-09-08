@@ -36,13 +36,6 @@ public class WordTokenizer {
 				continue;
 			} 
 			
-			if (token.matches(Regex.NUMBER)) {
-				words.add(token);
-				continue;
-			} else {
-				token = token.replace(",", " , ");
-			}
-			
 			if (token.matches(Regex.PHONE_NUMBER)) {
 				words.add(token);
 				continue;
@@ -64,6 +57,12 @@ public class WordTokenizer {
 					token = token.replace(matcher.group(), " " + matcher.group() + " ");
 				} else {
 					token = token.replace("/", " / ");
+					
+					pattern = Pattern.compile(Regex.NUMBER);
+					matcher = pattern.matcher(token);
+					if (!matcher.find()) {
+						token = token.replace(",", " , ");
+					}
 				}
 			}
 			
