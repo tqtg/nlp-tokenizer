@@ -10,7 +10,7 @@ import resources.Dictionay;
 import resources.Regex;
 
 public class WordTokenizer {
-	private static final String[] specialChar = {";", "…", "&", "?", "!", "_", "=", "\"", "'", "\\", "<", ">", "[", "]", "{", "}", "‘", "’", "“", "”", "*", "~", "^", "|"};
+	private static final String[] specialChar = {";", "…", "...", "&", "?", "!", "_", "=", "\"", "'", "\\", "<", ">", "[", "]", "{", "}", "‘", "’", "“", "”", "*", "~", "^", "|"};
 	private static final String[] eos = {".", "?", "!"};
 	
 	public static List<String> tokenize(String line) {
@@ -73,13 +73,11 @@ public class WordTokenizer {
 					matcher = pattern.matcher(token);
 					if (!matcher.find()) {
 						token = token.replace(",", " , ");
-						token = token.replace(".", " . ");
 					}
 				}
 			}
 			
-			if (token.contains("...")) token = token.replace("...", " ... ");
-			else if (token.endsWith(".") && token.length() > 1) token = token.substring(0, token.length() - 1) + " .";
+			if (token.endsWith(".") && !token.endsWith("..") && token.length() > 1) token = token.substring(0, token.length() - 1) + " .";
 			else if (token.endsWith(",") && token.length() > 1) token = token.substring(0, token.length() - 1) + " ,";
 			
 			words.addAll(StrUtil.tokenizeString(token, " "));

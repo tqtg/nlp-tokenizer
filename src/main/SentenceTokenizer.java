@@ -12,10 +12,15 @@ public class SentenceTokenizer {
 		List<String> sentences = new ArrayList<>();
 		
 		List<String> sentence = new ArrayList<>();
-		for (String word : words) {
+		for (int i = 0; i < words.size(); i++) {
+			String word = words.get(i);
 			sentence.add(word);
 			if (isEOS(word)) {
 				if (word.equals("EOS")) sentence.remove(sentence.size() - 1);
+				sentences.add(normalizeSentence(StrUtil.join(sentence)));
+				sentence.clear();
+			} else if (words.get(i).equals("...") &&
+					i + 1 < words.size() && Character.isUpperCase(words.get(i + 1).charAt(0))) {
 				sentences.add(normalizeSentence(StrUtil.join(sentence)));
 				sentence.clear();
 			}
