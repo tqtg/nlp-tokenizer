@@ -107,13 +107,20 @@ public class Main {
 		System.out.println("Total sentences: " + sentences.size());
 		
 		//	Write tokens to file
-		while (tokens.contains("EOS")) tokens.remove("EOS");
+		Iterator<String> itr = tokens.iterator();
+		while (itr.hasNext()) {
+			String token = itr.next();
+			if (token.equals("EOS")) itr.remove();
+		}
 		FileSaver.saveListString(tokens, "../output/" + filename + "_tokens.txt", ENCODING);
 		System.out.println("Total tokens: " + tokens.size());
 		
 		//	Count frequency of words
 		Map<String, Integer> wordsFrequency = new HashMap<>();
 		for (String token : tokens) {
+			token = token.toLowerCase();
+			token = token.replace("Đ", "đ");
+			
 			if (!wordsFrequency.containsKey(token)) wordsFrequency.put(token, 1);
 			else wordsFrequency.put(token, wordsFrequency.get(token) + 1);
 		}

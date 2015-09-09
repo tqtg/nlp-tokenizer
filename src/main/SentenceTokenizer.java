@@ -31,7 +31,10 @@ public class SentenceTokenizer {
 		for (String word : words) {
 			sentence.add(word);
 			if (isEOS(word)) {
-				if (word.equals("EOS")) sentence.remove(sentence.size() - 1);
+				if (word.equals("EOS")) {
+					sentence.remove(sentence.size() - 1);
+					word = "";
+				}
 				sentences.add(StrUtil.join(sentence, " | "));
 				sentence.clear();
 			}

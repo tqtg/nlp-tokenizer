@@ -10,7 +10,7 @@ import resources.Dictionay;
 import resources.Regex;
 
 public class WordTokenizer {
-	private static final String[] specialChar = {";", ":", "?", "!", "_", "\"", "'","\\", "[", "]", "{", "}", "‘", "’", "“", "”", "*"};
+	private static final String[] specialChar = {";", ":", "…", "&", "?", "!", "_", "=", "\"", "'", "\\", "<", ">", "[", "]", "{", "}", "‘", "’", "“", "”", "*", "~", "^", "|"};
 	private static final String[] eos = {".", "?", "!"};
 	
 	public static List<String> tokenize(String line) {
@@ -29,7 +29,7 @@ public class WordTokenizer {
 		
 		List<String> words = new ArrayList<>();	
 		
-		List<String> tokens = StrUtil.tokenizeString(line, " ");
+		List<String> tokens = StrUtil.tokenizeString(line, "  \t");
 		for (String token : tokens) {
 			if (Dictionay.isException(token)) {
 				words.add(token);
@@ -39,6 +39,8 @@ public class WordTokenizer {
 			if (token.matches(Regex.DATE)) {
 				words.add(token);
 				continue;
+			} else {
+				token = token.replace("/", " / ");
 			}
 			
 			if (token.matches(Regex.PHONE_NUMBER)) {
@@ -65,12 +67,12 @@ public class WordTokenizer {
 					matcher = pattern.matcher(token);
 					if (!matcher.find()) {
 						token = token.replace(",", " , ");
-						token = token.replace("/", " / ");
+						token = token.replace(".", " . ");
 					}
 				}
 			}
 			
-			if (token.endsWith("...") && token.length() > 3) token = token.substring(0, token.length() - 3) + " ...";
+			if (token.contains("...")) token = token.replace("...", " ... ");
 			else if (token.endsWith(".") && token.length() > 1) token = token.substring(0, token.length() - 1) + " .";
 			else if (token.endsWith(",") && token.length() > 1) token = token.substring(0, token.length() - 1) + " ,";
 			
