@@ -84,6 +84,9 @@ public class WordTokenizer {
 				}
 			}
 			
+			if (token.startsWith(".") && !token.equals(".")) token = token.replace(".", " . ");
+			else if (token.startsWith(",") && !token.equals(",")) token = token.replace(",", " , ");
+			
 			if (token.endsWith(".") && !token.endsWith("..") && token.length() > 1) token = token.substring(0, token.length() - 1) + " .";
 			else if (token.endsWith(",") && token.length() > 1) token = token.substring(0, token.length() - 1) + " ,";
 			

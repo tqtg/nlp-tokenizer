@@ -60,6 +60,8 @@ public class SentenceTokenizer {
 			}
 		}
 		if (sentence.endsWith(" \"")) sentence = sentence.substring(0, sentence.length() - 2) + "\"";
+		if (sentence.startsWith("\" ")) sentence = "\"" + sentence.substring(2);
+		sentence = sentence.replace(" \",", "\",");
 		
 		sentence = sentence.replace("‘ ", "‘");
 		sentence = sentence.replace(" ’", "’");

@@ -93,6 +93,10 @@ public class Main {
 		//	Sentences tokenization
 		long beginSenTokTime = System.currentTimeMillis();
 		List<String> sentences = SentenceTokenizer.tokenize(tokens);
+		Iterator<String> itr = sentences.iterator();
+		while (itr.hasNext()) {
+			if (itr.next().length() == 0) itr.remove();
+		}
 		long endSenTokTime = System.currentTimeMillis();
 		
 		List<String> sentencesWithSeperatedTokens = SentenceTokenizer.tokenizeWithSeperatedTokens(tokens);
@@ -101,13 +105,15 @@ public class Main {
 		if (i < 0) i = 0; 
 		filename = filename.substring(i, filename.lastIndexOf("."));
 		
+		
+		
 		//	Write sentences to file
 		FileSaver.saveListString(sentences, "../output/" + filename + "_sentences.txt", ENCODING);
 		FileSaver.saveListString(sentencesWithSeperatedTokens, "../output/" + filename + "_sentencesWithSeperatedTokens.txt", ENCODING);
 		System.out.println("Total sentences: " + sentences.size());
 		
 		//	Write tokens to file
-		Iterator<String> itr = tokens.iterator();
+		itr = tokens.iterator();
 		while (itr.hasNext()) {
 			String token = itr.next();
 			if (token.equals("EOS")) itr.remove();
