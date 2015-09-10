@@ -118,16 +118,13 @@ public class Main {
 		//	Count frequency of words
 		Map<String, Integer> wordsFrequency = new HashMap<>();
 		for (String token : tokens) {
-			token = token.toLowerCase();
-			token = token.replace("Đ", "đ");
-			
 			if (!wordsFrequency.containsKey(token)) wordsFrequency.put(token, 1);
 			else wordsFrequency.put(token, wordsFrequency.get(token) + 1);
 		}
 		Map<String, Integer> sortedMap = sortByComparator(wordsFrequency);
 		List<String> words = new ArrayList<>();
 		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
-			words.add(entry.getKey() + " : " + entry.getValue());
+			words.add(entry.getKey() + " " + entry.getValue());
 		}
 		
 		//	Write words frequency to file
