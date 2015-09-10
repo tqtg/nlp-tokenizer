@@ -71,7 +71,14 @@ public class WordTokenizer {
 				} else {
 					pattern = Pattern.compile(Regex.NUMBER);
 					matcher = pattern.matcher(token);
-					if (!matcher.find()) {
+					if (matcher.find()) {
+						if (!matcher.group().contains(",")) {
+							token = token.replace(",", " , ");
+						}
+						if (!matcher.group().contains(".")) {
+							token = token.replace(".", " . ");
+						}
+					} else {
 						token = token.replace(",", " , ");
 					}
 				}
