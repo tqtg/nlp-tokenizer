@@ -92,14 +92,14 @@ public class Main {
 		
 		//	Sentences tokenization
 		long beginSenTokTime = System.currentTimeMillis();
-		List<String> sentences = SentenceTokenizer.tokenize(tokens);
+		List<String> sentences = SentenceTokenizer.tokenize(tokens, " ");
 		Iterator<String> itr = sentences.iterator();
 		while (itr.hasNext()) {
 			if (itr.next().length() == 0) itr.remove();
 		}
 		long endSenTokTime = System.currentTimeMillis();
 		
-		List<String> sentencesWithSeperatedTokens = SentenceTokenizer.tokenizeWithSeperatedTokens(tokens);
+		List<String> sentencesWithSeperatedTokens = SentenceTokenizer.tokenize(tokens, " | ");
 		
 		int i = filename.lastIndexOf("/");
 		if (i < 0) i = 0; 
