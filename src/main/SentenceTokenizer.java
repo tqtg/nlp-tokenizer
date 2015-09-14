@@ -8,7 +8,7 @@ import jmdn.base.util.string.StrUtil;
 public class SentenceTokenizer {
 	private static final String[] eos = {".", "?", "!", "EOS"};
 	
-	public static List<String> tokenize(List<String> words, String delimiter) {
+	public static List<String> tokenizeSentenceAndWord(List<String> words) {
 		List<String> sentences = new ArrayList<>();
 		
 		List<String> sentence = new ArrayList<>();
@@ -17,11 +17,32 @@ public class SentenceTokenizer {
 			sentence.add(word);
 			if (isEOS(word)) {
 				if (word.equals("EOS")) sentence.remove(sentence.size() - 1);
-				sentences.add(normalizeSentence(StrUtil.join(sentence, delimiter)));
+				sentences.add(StrUtil.join(sentence));
 				sentence.clear();
 			} else if (words.get(i).equals("...") &&
 					i + 1 < words.size() && Character.isUpperCase(words.get(i + 1).charAt(0))) {
-				sentences.add(normalizeSentence(StrUtil.join(sentence, delimiter)));
+				sentences.add(StrUtil.join(sentence));
+				sentence.clear();
+			}
+		}
+		
+		return sentences;
+	}
+	
+	public static List<String> tokenizeSentence(List<String> words) {
+		List<String> sentences = new ArrayList<>();
+		
+		List<String> sentence = new ArrayList<>();
+		for (int i = 0; i < words.size(); i++) {
+			String word = words.get(i);
+			sentence.add(word);
+			if (isEOS(word)) {
+				if (word.equals("EOS")) sentence.remove(sentence.size() - 1);
+				sentences.add(normalizeSentence(StrUtil.join(sentence)));
+				sentence.clear();
+			} else if (words.get(i).equals("...") &&
+					i + 1 < words.size() && Character.isUpperCase(words.get(i + 1).charAt(0))) {
+				sentences.add(normalizeSentence(StrUtil.join(sentence)));
 				sentence.clear();
 			}
 		}
