@@ -1,5 +1,5 @@
 , 2115
-. 1493
+. 1676
 có 631
 và 507
 của 408
@@ -47,15 +47,14 @@ công 136
 em 135
 bị 134
 giá 132
-1 128
-... 128
+1 129
+.. 129
 nhiều 126
+2 125
 nhân 125
-/ 124
 sạn 124
 hình 119
 vào 118
-2 117
 đó 117
 đến 117
 làm 114
@@ -66,6 +65,7 @@ mà 109
 nên 109
 " 107
 hơn 106
+3 105
 ? 105
 biết 105
 ăn 104
@@ -80,7 +80,6 @@ con 100
 ko 100
 dùng 98
 còn 98
-3 95
 trên 95
 bác 95
 số 94
@@ -98,6 +97,7 @@ dụng 88
 sáng 87
 tình 86
 việc 85
+/ 81
 qua 81
 thông 80
 đầu 80
@@ -176,6 +176,7 @@ chung 51
 thường 51
 Tôi 51
 đều 51
+4 50
 tự 50
 xe 50
 chúng 50
@@ -186,6 +187,7 @@ trí 49
 Khách 49
 do 49
 đình 49
+5 48
 kết 48
 sử 48
 đặt 48
@@ -199,7 +201,6 @@ tác 46
 doanh 46
 hơi 46
 resort 46
-4 45
 gian 45
 biệt 45
 tiện 45
@@ -237,7 +238,6 @@ Mình 41
 nay 41
 thiện 41
 thị 41
-5 40
 hỏi 40
 tính 40
 hội 40
@@ -364,7 +364,6 @@ xài 29
 nhanh 29
 & 28
 đc 28
-10 28
 VN 28
 mở 28
 du 28
@@ -375,6 +374,7 @@ chạy 28
 = 27
 > 27
 chiếc 27
+10 27
 hồ 27
 luôn 27
 ok 27
@@ -417,6 +417,7 @@ gọi 25
 xây 25
 trả 25
 trị 24
+7 24
 chu 24
 tích 24
 Có 24
@@ -463,7 +464,6 @@ mấy 22
 từng 22
 Đây 22
 đáo 22
-7 21
 riêng 21
 Ông 21
 nhé 21
@@ -484,7 +484,6 @@ truyền 20
 Nói 20
 hóa 20
 minh 20
-20 20
 kiểm 20
 nhớ 20
 giao 20
@@ -502,6 +501,7 @@ nguồn 20
 … 19
 s 19
 thanh 19
+201 19
 sống 19
 ngành 19
 có 19
@@ -557,7 +557,6 @@ check 17
 tượng 17
 yêu 17
 phạm 17
-15 17
 tổng 17
 SH 17
 bỏ 17
@@ -585,8 +584,7 @@ góp 16
 chi 16
 dưỡng 16
 thoải 16
-01 16
-12 16
+20 16
 kiện 16
 lưu 16
 lấy 16
@@ -609,9 +607,9 @@ liệu 16
 đôi 16
 chị 16
 yếu 16
-8 15
 khẩu 15
 Spa 15
+01 15
 tải 15
 lạc 15
 sát 15
@@ -647,6 +645,7 @@ nhiệm 14
 Bình 14
 Hải 14
 ích 14
+12 14
 nhờ 14
 Về 14
 hiểu 14
@@ -714,14 +713,12 @@ sai 13
 vòng 13
 tiến 13
 Trước 13
-c 12
 root 12
 thú 12
 Anh 12
 trái 12
 may 12
 chút 12
-30 12
 trực 12
 Chủ 12
 Hồ 12
@@ -759,6 +756,7 @@ chờ 12
 thúc 11
 được 11
 a 11
+c 11
 khảo 11
 thăm 11
 tiên 11
@@ -766,7 +764,7 @@ tiên 11
 tĩnh 11
 chiếm 11
 nhóm 11
-06 11
+15 11
 Thứ 11
 sắc 11
 rãi 11
@@ -798,7 +796,6 @@ tinh 11
 Ngoài 11
 Bên 11
 ưu 11
-2015 11
 mục 11
 thấp 11
 Những 11
@@ -823,6 +820,7 @@ CNTT 10
 hôm 10
 xách 10
 02 10
+06 10
 cường 10
 kiếm 10
 nhỉ 10
@@ -870,7 +868,7 @@ xét 10
 kênh 10
 trừ 9
 để 9
-9 9
+8 9
 B 9
 J 9
 h 9
@@ -881,6 +879,7 @@ coi 9
 Android 9
 châu 9
 phạt 9
+30 9
 Phương 9
 luận 9
 chăm 9
@@ -932,6 +931,7 @@ Máy 9
 Hưng 9
 TP.HCM 9
 chống 9
+0 8
 P 8
 _ 8
 z 8
@@ -947,8 +947,6 @@ khẳng 8
 Intourco 8
 07 8
 phản 8
-14 8
-2. 8
 bật 8
 chồng 8
 kiểu 8
@@ -990,7 +988,6 @@ vận 8
 phiên 8
 suất 8
 phiếu 8
-2014 8
 ghép 8
 ấn 8
 ấy 8
@@ -1011,6 +1008,7 @@ Vậy 8
 Sharp 8
 softbank 8
 Hoa 8
+945 8
 tháo 8
 phim 8
 spa 8
@@ -1022,10 +1020,10 @@ khí 8
 ngồi 8
 chặn 8
 tịch 8
+9 7
 xóa 7
 Z 7
 b 7
-i 7
 room 7
 chú 7
 sánh 7
@@ -1035,7 +1033,7 @@ ngăn 7
 tươi 7
 ngoại 7
 Biển 7
-11 7
+14 7
 người 7
 Chỉ 7
 smartphone 7
@@ -1118,7 +1116,6 @@ ngắm 7
 hỏng 7
 RAM 7
 xếp 7
-945 7
 đáp 7
 đèn 7
 Giang 7
@@ -1137,8 +1134,8 @@ Facebook 7
 cac 7
 cam 7
 chặt 7
-# 6
 g 6
+i 6
 p 6
 nhiêu 6
 đ 6
@@ -1152,10 +1149,7 @@ Thiết 6
 Năm 6
 chiếu 6
 trúc 6
-.. 6
 lại 6
-04 6
-3. 6
 40 6
 sắp 6
 Hệ 6
@@ -1215,7 +1209,7 @@ Ngày 6
 nấu 6
 lương 6
 mệt 6
-2013 6
+2015 6
 Đặc 6
 bác 6
 vườn 6
@@ -1249,9 +1243,9 @@ với 6
 chả 6
 tai 6
 Đồ 6
+% 5
 A 5
 N 5
-T 5
 X 5
 y 5
 đt 5
@@ -1272,7 +1266,7 @@ hút 5
 khỏi 5
 Samsung 5
 khối 5
-19 5
+04 5
 bánh 5
 Trang 5
 Thế 5
@@ -1403,11 +1397,12 @@ buồn 5
 Pháp 5
 trễ 4
 buộc 4
+# 4
 trụ 4
 ' 4
 muỗi 4
 hang 4
-U 4
+T 4
 V 4
 [ 4
 ] 4
@@ -1441,8 +1436,6 @@ niềm 4
 main 4
 chúc 4
 03 4
-05 4
-1. 4
 13 4
 18 4
 nhiều 4
@@ -1515,7 +1508,6 @@ is 4
 Mũi 4
 phím 4
 dạy 4
-m2 4
 ma 4
 570 4
 dần 4
@@ -1559,7 +1551,6 @@ dụng 4
 lừa 4
 Download 4
 mỏi 4
-2010 4
 sony 4
 Bởi 4
 truy 4
@@ -1638,9 +1629,9 @@ SoftBank 4
 đỏ 4
 $ 3
 mượt 3
-0 3
 L 3
 M 3
+U 3
 đụng 3
 j 3
 xôi 3
@@ -1715,20 +1706,22 @@ UBND 3
 trục 3
 Angsana 3
 bách 3
-2015. 3
 mail 3
 Nhật 3
 logo 3
 khỏe 3
 LCD 3
 niệm 3
-2014. 3
 rượu 3
 khám 3
+00 3
+05 3
 ruột 3
 1% 3
+11 3
 sấy 3
 16 3
+19 3
 21 3
 23 3
 25 3
@@ -1739,6 +1732,7 @@ VNPT 3
 Kim 3
 ĐBQH 3
 rùi 3
+80 3
 Thiên 3
 vai 3
 cạnh 3
@@ -1813,6 +1807,7 @@ cú 3
 ha 3
 vẽ 3
 Citi 3
+m2 3
 vào 3
 gõ 3
 hì 3
@@ -1894,6 +1889,8 @@ loài 3
 Sang 3
 nắm 3
 mối 3
+2014 3
+2013 3
 Thực 3
 mãi 3
 tặng 3
@@ -1962,6 +1959,7 @@ Tràng 3
 nửa 3
 Famiana 3
 Unlock 3
+923 3
 thịt 3
 hại 3
 đài 3
@@ -1980,6 +1978,7 @@ nhạy 3
 tháp 3
 khổ 3
 Bamboo 3
+1,2 3
 Clinton 3
 đới 3
 chấm 3
@@ -2015,7 +2014,6 @@ phải 3
 BBQ 2
 – 2
 ten 2
-% 2
 mượn 2
 vuông 2
 1.000 2
@@ -2043,6 +2041,7 @@ Hơi 2
 SMS 2
 ĐH 2
 đe 2
+2.0 2
 mAh 2
 đo 2
 bỏng 2
@@ -2067,7 +2066,6 @@ khổng 2
 Dakruco 2
 đào 2
 tràn 2
-1945 2
 tụng 2
 Nghệ 2
 hoài 2
@@ -2088,6 +2086,7 @@ Ngay 2
 Bay 2
 lun 2
 chìm 2
+11/2 2
 Biết 2
 CEO 2
 Bằng 2
@@ -2108,6 +2107,7 @@ khác 2
 3.0 2
 Quân 2
 doc 2
+3.5 2
 TPP 2
 man 2
 usb 2
@@ -2121,7 +2121,6 @@ bại 2
 khâm 2
 0% 2
 hỏi 2
-00 2
 08 2
 Lăng 2
 bang 2
@@ -2136,23 +2135,20 @@ chế 2
 9999 2
 mộng 2
 chửi 2
-4. 2
 manh 2
 suông 2
-5. 2
 giữa 2
 64 2
 65 2
 68 2
 bẩn 2
 admin 2
+7% 2
 70 2
 Chinh 2
 77 2
 Chị 2
 khép 2
-8. 2
-80 2
 nhựa 2
 trăm 2
 trăn 2
@@ -2280,6 +2276,7 @@ hề 2
 hổ 2
 bào 2
 hở 2
+4.000 2
 dàng 2
 bốn 2
 bối 2
@@ -2459,7 +2456,9 @@ nhen 2
 Thụy 2
 clean 2
 lùi 2
+7,3 2
 đượ 2
+7,5 2
 huấn 2
 Dalat 2
 lúa 2
@@ -2485,7 +2484,6 @@ ngạch 2
 giặt 2
 2008 2
 htc 2
-2020 2
 chuộng 2
 Sapa 2
 mây 2
@@ -2640,7 +2638,6 @@ guests 2
 Niên 2
 Kiểm 2
 920 2
-923 2
 930 2
 hứng 2
 hạt 2
@@ -2668,7 +2665,6 @@ Quỹ 2
 hieu 2
 restaurant 2
 soạn 2
-1,2 2
 xịn 2
 phường 2
 thổi 2
@@ -2707,6 +2703,8 @@ Vettel 2
 sẻ 2
 ngọt 2
 ngốn 2
+195 2
+197 2
 chổ 2
 chở 2
 Mục 2
@@ -2756,8 +2754,6 @@ xót 1
 Jordan 1
 ` 1
 Reminder 1
-15,16 1
-1,280 1
 muộn 1
 n 1
 PVFCCo 1
@@ -2784,7 +2780,6 @@ Focus 1
 Vót 1
 động 1
 khấu 1
-24.000 1
 nhiêt 1
 đính 1
 22.430 1
@@ -2811,7 +2806,6 @@ cooktail 1
 zẫn 1
 block 1
 SLS 1
-2005. 1
 flow 1
 bibị 1
 order 1
@@ -2829,7 +2823,6 @@ Phiêu 1
 Luôn 1
 Phiên 1
 thời 1
-1081 1
 toi 1
 Đa 1
 3.000.000 1
@@ -2849,7 +2842,6 @@ thường 1
 SOL 1
 TP.H 1
 phụ 1
-2.0 1
 2.1 1
 2.2 1
 XSIM 1
@@ -2877,6 +2869,7 @@ trd 1
 BOX 1
 tri 1
 trệt 1
+202 1
 tru 1
 205 1
 20.000m2 1
@@ -2885,7 +2878,6 @@ chiêm 1
 toà 1
 KBC 1
 tiêm 1
-415. 1
 timer 1
 SRS 1
 lắm 1
@@ -2899,12 +2891,13 @@ hàn 1
 hày 1
 Networks 1
 Johnathan 1
+19/8 1
 nhịp 1
-39,706 1
 KDC 1
 Amiana 1
 234 1
 Bloomberg 1
+19/4 1
 dock 1
 Phục 1
 night 1
@@ -2921,9 +2914,11 @@ Nghĩa 1
 BTS 1
 nhượng 1
 wilmax 1
+30/8/1947 1
 nhọn 1
 hãi 1
 chọi 1
+256 1
 1T7 1
 does 1
 Emeralda 1
@@ -2931,7 +2926,7 @@ chọt 1
 think 1
 Yadav 1
 9898 1
-1920 1
+6/06 1
 Jet 1
 trọt 1
 buýt 1
@@ -2947,14 +2942,13 @@ ngửi 1
 ngoặt 1
 trào 1
 page 1
-1947 1
 QUOTE 1
 thực 1
 290 1
+10/4/2014 1
 Extensions 1
 bơm 1
 nhái 1
-1953 1
 trãi 1
 Mountain 1
 bootloader 1
@@ -2970,7 +2964,6 @@ cháy 1
 nhiệp 1
 sénor 1
 trân 1
-1977 1
 tí 1
 Dana 1
 Arcadia 1
@@ -2987,7 +2980,6 @@ loe 1
 bright 1
 lon 1
 1998 1
-1997 1
 ký 1
 kỹ 1
 low 1
@@ -2995,12 +2987,10 @@ Carens 1
 1991 1
 kỷ 1
 Stable 1
-57,87% 1
 dẫn 1
 souq.com 1
 Hiệp 1
 Jamona 1
-x1080 1
 tạng 1
 chèo 1
 trộn 1
@@ -3008,7 +2998,6 @@ trộn 1
 nhèm 1
 dai 1
 hít 1
-9020 1
 dam 1
 tréo 1
 Like 1
@@ -3053,6 +3042,7 @@ VietNamNet 1
 đẳng 1
 cưng 1
 Simon 1
+11/8 1
 hòi 1
 11/7 1
 hòm 1
@@ -3060,7 +3050,6 @@ TFT 1
 hòn 1
 pass 1
 Palace 1
-1110 1
 bill 1
 CEN 1
 Sea 1
@@ -3091,6 +3080,7 @@ Holiday 1
 AirGo 1
 sưu 1
 dia 1
+2/6/2015 1
 club 1
 tác 1
 GERMAN 1
@@ -3100,6 +3090,7 @@ lẽ 1
 Megapixels 1
 final 1
 họach 1
+1h3 1
 trọng 1
 Wade 1
 tụ 1
@@ -3114,6 +3105,7 @@ gprs 1
 nhòe 1
 tróc 1
 3,5 1
+3,7 1
 dml 1
 Thung 1
 rườm 1
@@ -3130,8 +3122,8 @@ thàng 1
 Canada 1
 chôn 1
 3.2 1
+15/3/2015 1
 sở 1
-3.5 1
 Hostel 1
 ruồi 1
 CNN 1
@@ -3145,9 +3137,9 @@ VietnamPost 1
 Thuyền 1
 mai 1
 stream 1
+3/1 1
 0.69 1
 30% 1
-h15h 1
 nhục 1
 chục 1
 300 1
@@ -3155,7 +3147,6 @@ Son 1
 301 1
 duyên 1
 LAN 1
-2016. 1
 Trách 1
 nhiếp 1
 chùa 1
@@ -3195,6 +3186,7 @@ khán 1
 khốc 1
 trải 1
 Xác 1
+0- 1
 ístar 1
 hực 1
 inox 1
@@ -3204,15 +3196,21 @@ chửa 1
 Quới 1
 Serum 1
 Marriage 1
+0U 1
+17 1
 gương 1
 Sun 1
 Xây 1
 Land 1
 nịnh 1
+0c 1
 1t8 1
 cjập 1
+0i 1
 Fusion 1
 22 1
+0p 1
+1T 1
 27 1
 28 1
 29 1
@@ -3224,19 +3222,22 @@ phấn 1
 3- 1
 sầm 1
 gửi 1
-3.500 1
 32 1
 ngoài 1
 xperia 1
 35 1
 36 1
 khiêu 1
+01/04 1
 382 1
+384 1
+388 1
 1.900 1
 niềm 1
 43 1
 Forbes 1
 49 1
+5# 1
 bầy 1
 u.Th 1
 53 1
@@ -3245,7 +3246,6 @@ Kia 1
 quốc 1
 cooked 1
 William 1
-6. 1
 60 1
 62 1
 Bề 1
@@ -3257,8 +3257,8 @@ Bố 1
 Thụ 1
 Bồ 1
 amoled 1
+5h 1
 Giấy 1
-7. 1
 Bờ 1
 73 1
 Dạ 1
@@ -3277,6 +3277,7 @@ khét 1
 82 1
 85 1
 Cỡ 1
+88 1
 Xét 1
 9100 1
 Chứ 1
@@ -3288,7 +3289,6 @@ sử 1
 Suzuki 1
 Hẹn 1
 95 1
-96 1
 ThaThanks 1
 vao 1
 sự 1
@@ -3330,7 +3330,6 @@ vương 1
 Yến 1
 muc 1
 LTE 1
-3845 1
 mui 1
 Trả 1
 khểnh 1
@@ -3407,9 +3406,11 @@ EN 1
 gather 1
 4,0 1
 http 1
+4,1 1
 4,4 1
 4,5 1
 1.200 1
+4,8 1
 tấm 1
 Rổ 1
 học 1
@@ -3423,6 +3424,7 @@ Fu 1
 forum 1
 CÓ 1
 Candle 1
+30.6 1
 Asia 1
 Tị 1
 4.3 1
@@ -3433,6 +3435,7 @@ Cà 1
 Tổ 1
 nũa 1
 UPD 1
+30/9 1
 penthouse 1
 Song 1
 Cú 1
@@ -3461,8 +3464,10 @@ In 1
 It 1
 ng.t 1
 jaccuzi 1
+20/8/2015 1
 quyến 1
 414 1
+415 1
 Style 1
 Menu 1
 nayfaf 1
@@ -3491,6 +3496,7 @@ cạn 1
 nen 1
 Lg 1
 cable 1
+15/8/2015 1
 Hè 1
 lốp 1
 ái 1
@@ -3532,6 +3538,7 @@ tần 1
 Malaya 1
 Ps 1
 Lô 1
+3/QĐ 1
 Lãnh 1
 eye 1
 đồn 1
@@ -3561,13 +3568,11 @@ móng 1
 TA 1
 nhiệt 1
 tour 1
-TB 1
 boring 1
 TG 1
 DSLR 1
 Phòng 1
 VKFTA 1
-NĐ 1
 hoạt 1
 kẹp 1
 Ta 1
@@ -3579,6 +3584,7 @@ sphin 1
 Eldora 1
 cắt 1
 ảo 1
+8423# 1
 Botanica 1
 VD 1
 hiền 1
@@ -3595,7 +3601,6 @@ cộ 1
 tậu 1
 bịa 1
 30.000 1
-QĐ 1
 bịn 1
 Á 1
 tễnh 1
@@ -3622,7 +3627,6 @@ luân 1
 ZC 1
 shrap 1
 microsim 1
-923. 1
 ZL 1
 đổi 1
 MRI 1
@@ -3650,7 +3654,6 @@ Dau 1
 nua 1
 hiệp 1
 unclock 1
-4.000 1
 MTP 1
 Xã 1
 MTV 1
@@ -3705,6 +3708,7 @@ y.C 1
 Giáo 1
 nề 1
 phổi 1
+30/8/2015 1
 lầm 1
 y.M 1
 rang 1
@@ -3720,6 +3724,7 @@ at 1
 y.l 1
 nụ 1
 y.m 1
+3h1 1
 cặn 1
 Hôm 1
 bb 1
@@ -3737,12 +3742,10 @@ Galleria 1
 giang 1
 bèo 1
 Blocking 1
-1373 1
 cm 1
 cn 1
 fls 1
 Vùng 1
-h30p 1
 5,7 1
 5,9 1
 bén 1
@@ -3754,6 +3757,7 @@ bội 1
 bột 1
 Veall 1
 Centric 1
+2/2013 1
 Đảng 1
 rổ 1
 rộ 1
@@ -3771,7 +3775,6 @@ Dual 1
 salon 1
 TAND 1
 thiệ 1
-h30 1
 lận 1
 bê 1
 Bonne 1
@@ -3783,6 +3786,8 @@ lật 1
 gb 1
 cà 1
 NHNN 1
+5/8 1
+5/9 1
 Thậm 1
 digital 1
 gi 1
@@ -3793,6 +3798,7 @@ go 1
 cò 1
 chịu 1
 đag 1
+501 1
 ViVa 1
 vậ 1
 đai 1
@@ -3816,7 +3822,7 @@ ip 1
 vở 1
 it 1
 xả 1
-2.0. 1
+167/2013 1
 Mah 1
 1.5GHz 1
 Mau 1
@@ -3828,6 +3834,7 @@ kV 1
 phongcachnhat 1
 xệ 1
 xỉ 1
+2.08 1
 Exmor 1
 kd 1
 anten 1
@@ -3841,7 +3848,6 @@ ky 1
 xứ 1
 Sạc 1
 mA 1
-х39 1
 lh 1
 Fengshui 1
 lu 1
@@ -3875,7 +3881,6 @@ jó 1
 dũng 1
 dư 1
 luận 1
-6,888 1
 oi 1
 0902 1
 oo 1
@@ -3888,6 +3893,7 @@ cứng 1
 Chống 1
 Shen 1
 pm 1
+0913 1
 Odin 1
 lặp 1
 lí 1
@@ -3964,6 +3970,7 @@ thienminh 1
 bình 1
 Duqu 1
 dữ 1
+12h3 1
 bừa 1
 vv 1
 dập 1
@@ -3977,13 +3984,11 @@ dật 1
 we 1
 kíp 1
 Gươm 1
-0913645685 1
 lien 1
 dự 1
 chất 1
 wp 1
 AVANI 1
-130.617.211 1
 só 1
 goị 1
 ẩn 1
@@ -4023,6 +4028,7 @@ Xong 1
 110.000 1
 NTD 1
 Tiếng 1
+6х3 1
 tùng 1
 German 1
 gen 1
@@ -4098,9 +4104,11 @@ xưởng 1
 i.v 1
 Lịch 1
 dẹt 1
+6,1 1
 wing 1
 FLC 1
 wind 1
+6,8 1
 xiền 1
 sắc 1
 FLS 1
@@ -4132,6 +4140,7 @@ Gizmodo 1
 mập 1
 tím 1
 selfie 1
+6/9 1
 kSent 1
 gps 1
 60% 1
@@ -4181,8 +4190,8 @@ i.Ng 1
 Techcombank 1
 lãm 1
 TMĐT 1
-30.4.2008. 1
 dÙng 1
+10/6/2015 1
 Penthouse 1
 sảm 1
 sản 1
@@ -4228,9 +4237,7 @@ giờ 1
 extra 1
 EHông 1
 lanh 1
-5010 1
 tien 1
-1,56 1
 Nhấn 1
 dòng 1
 lèo 1
@@ -4288,6 +4295,7 @@ maxmobile 1
 22.090 1
 Mỹ 1
 mến 1
+15,1 1
 Brown 1
 Chắn 1
 Review 1
@@ -4367,6 +4375,7 @@ chak 1
 cước 1
 UPD.exe 1
 nhac 1
+00m2 1
 SHARP 1
 tính 1
 facility 1
@@ -4382,6 +4391,7 @@ group 1
 lounge 1
 Why 1
 Thôi 1
+.88 1
 Aodai 1
 Đầu 1
 Bồn 1
@@ -4397,9 +4407,8 @@ Vodafone 1
 Dưa 1
 chụp 1
 giật 1
-7,3 1
 Lầu 1
-7,5 1
+7,8 1
 100.000 1
 chuữ 1
 Thùy 1
@@ -4424,7 +4433,6 @@ hok 1
 nhật 1
 bungalow 1
 chim 1
-1957. 1
 dìu 1
 Lumix 1
 series 1
@@ -4454,15 +4462,17 @@ hoá 1
 Finnet 1
 NVIDIA 1
 lễ 1
-2012 1
-2011 1
+2010 1
 regza 1
+2005 1
 2003 1
 thạch 1
 Mbps4 1
 dởm 1
 giặc 1
+737 1
 máu 1
+2020 1
 Tết 1
 Ngành 1
 troi 1
@@ -4523,7 +4533,6 @@ Overall 1
 bắt 1
 Myerson 1
 chiếu 1
-2.087,5 1
 khac 1
 mát 1
 ngiệp 1
@@ -4560,8 +4569,9 @@ fish 1
 lòng 1
 trí 1
 vững 1
-2010-2015. 1
 Full 1
+/11 1
+/14 1
 vác 1
 ành 1
 8220 1
@@ -4613,7 +4623,6 @@ Pierre 1
 TUIV 1
 Reuters 1
 nhéLiên 1
-6,1% 1
 VNExpress 1
 toát 1
 68.400 1
@@ -4638,13 +4647,11 @@ chúc 1
 c.P.S 1
 vội 1
 banbạn 1
-34,1 1
 Placenta 1
 Content 1
 nghệ 1
 calorie 1
 Phố 1
-34,8 1
 múa 1
 Khuyết 1
 thấu 1
@@ -4684,7 +4691,6 @@ Tìm 1
 close 1
 Trời 1
 Bộ 1
-37,3% 1
 820 1
 đắn 1
 vọng 1
@@ -4703,6 +4709,7 @@ add 1
 Đức 1
 Leahy 1
 thẫm 1
+17.211 1
 xtmobile 1
 Đán 1
 mực 1
@@ -4711,6 +4718,7 @@ nháquay 1
 nâu 1
 Vạn 1
 Harvard 1
+25,04 1
 sorry 1
 vót 1
 pasta 1
@@ -4795,7 +4803,6 @@ sưởi 1
 Chức 1
 Main 1
 Chứa 1
-7378423 1
 Lên 1
 uống 1
 xắn 1
@@ -4814,10 +4821,12 @@ xấu 1
 Mang 1
 Bana 1
 lọc 1
-015 1
+012 1
+014 1
 Many 1
 mất 1
 kids 1
+30.4.2008 1
 Loki 1
 ICA 1
 vệ 1
@@ -4848,7 +4857,7 @@ ngật 1
 viết 1
 Út 1
 Riêng 1
-10,57% 1
+/TB 1
 nôi 1
 Botvac 1
 đểu 1
@@ -4859,14 +4868,14 @@ ngậm 1
 Đón 1
 17.990.000 1
 tokyo 1
-3,7% 1
+/NĐ 1
 Đợi 1
 ng.sang 1
 Luật 1
 Mate 1
 Đôi 1
+0x1080 1
 Đợt 1
-1962. 1
 QUÁ 1
 Cựu 1
 Roderich 1
@@ -4885,6 +4894,7 @@ card 1
 Hướng 1
 ngồi 1
 SciO 1
+15/8/1945 1
 truoc 1
 kayak 1
 Hic 1
@@ -4897,6 +4907,7 @@ Lamborghini 1
 ỏi 1
 thềm 1
 Botanic 1
+9,7 1
 simple 1
 àm 1
 microSDXC 1
@@ -4906,7 +4917,6 @@ tuyệt 1
 king 1
 gheghê 1
 Kiến 1
-388.88. 1
 Kiếm 1
 ám 1
 khiển 1
@@ -4918,6 +4928,7 @@ Love 1
 bac.truoc 1
 DongABank 1
 29/12/2009 1
+9/1 1
 kiện 1
 san 1
 move 1
@@ -4933,6 +4944,7 @@ Kiều 1
 900 1
 crossprocess 1
 CenDeluxe 1
+902 1
 hội 1
 bad 1
 Carter 1
@@ -4994,6 +5006,7 @@ gangần 1
 trở 1
 Hãng 1
 dính 1
+1/05 1
 S1-SW-LIVE-883F-PID1-0001-S1-PARTITION-WITH-SPARE.sin 1
 Htc 1
 liễu 1
@@ -5037,7 +5050,6 @@ u.v 1
 Messi 1
 đthoại 1
 sương 1
-25600 1
 0973359555 1
 địch 1
 Rieser 1
@@ -5050,6 +5062,7 @@ Ptak 1
 sành 1
 thât 1
 thâu 1
+1,5 1
 1,6 1
 1,9 1
 16.77 1
@@ -5076,20 +5089,24 @@ attached 1
 thanhk 1
 Saigon 1
 thèm 1
+1/2 1
+1/7 1
 1/9 1
 Megapixel 1
 vòng 1
 Ractopamine 1
 social 1
 18,6 1
-10. 1
 hihi 1
 103 1
 106 1
+108 1
 hắn 1
 xàm 1
 xào 1
 Mường 1
+645685 1
+111 1
 Hills 1
 thuật 1
 mỗi 1
@@ -5116,6 +5133,7 @@ Innovation 1
 Hiếu 1
 135 1
 keo 1
+137 1
 chứ 1
 Móng 1
 ủa 1
@@ -5142,11 +5160,9 @@ Ảnh 1
 zero 1
 trắc 1
 Cán 1
-167 1
 út 1
 chậu 1
 17% 1
-17. 1
 Driver 1
 đôn 1
 ỏ 1
@@ -5164,20 +5180,24 @@ thở 1
 ừ 1
 Ngoài 1
 185 1
+188 1
 Viên 1
 ericson 1
 m.C 1
 Môn 1
+192 1
+196 1
 Give 1
 Luân 1
+199 1
 hack 1
 facbook 1
+14/06/2015 1
 chớ 1
 Firmware 1
 ngát 1
 Lượng 1
 Hoàn 1
-1975. 1
 YouTube 1
 Edition 1
 Đáng 1
@@ -5195,7 +5215,6 @@ restart 1
 tired 1
 Play 1
 site 1
-1883 1
 1881 1
 đúc 1
 hẻm 1
@@ -5204,7 +5223,6 @@ dương 1
 Keep 1
 toạ 1
 cooks 1
-25,042 1
 should 1
 only 1
 mức 1
@@ -5235,3 +5253,4 @@ SBS 1
 nhặn 1
 Phát 1
 10,4 1
+10,5 1

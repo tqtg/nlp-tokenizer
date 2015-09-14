@@ -37,6 +37,12 @@ public class WordTokenizer {
 				continue;
 			}
 			
+			if (token.startsWith(".") && !token.equals(".")) token = ". " + token.substring(1);
+			else if (token.startsWith(",") && !token.equals(",")) token = ", " + token.substring(1);
+			
+			if (token.endsWith(".") && !token.endsWith("..") && token.length() > 1) token = token.substring(0, token.length() - 1) + " .";
+			else if (token.endsWith(",") && token.length() > 1) token = token.substring(0, token.length() - 1) + " ,";
+			
 			if (token.matches(Regex.DATE)) {
 				words.add(token);
 				continue;
@@ -46,7 +52,6 @@ public class WordTokenizer {
 				words.add(token);
 				continue;
 			} else {
-				token = token.replace("/", " / ");
 				token = token.replace(":", " : ");
 			}
 			
@@ -63,25 +68,31 @@ public class WordTokenizer {
 			if (matcher.find()) {
 				token = token.replace(matcher.group(0), " " + matcher.group(0) + " ");
 			} else {
-				pattern = Pattern.compile(Regex.NUMBER);
+				pattern = Pattern.compile(Regex.DATE);
 				matcher = pattern.matcher(token);
 				if (matcher.find()) {
 					token = token.replace(matcher.group(0), " " + matcher.group(0) + " ");
-					
-					if (!matcher.group(0).contains(",")) {
-						token = token.replace(",", " , ");
-					}
 				} else {
-					token = token.replace(",", " , ");
-					token = token.replace("+", " + ");
 					token = token.replace("-", " - ");
+					token = token.replace("/", " / ");
 					
-					pattern = Pattern.compile(Regex.URL);
+					pattern = Pattern.compile(Regex.NUMBER);
 					matcher = pattern.matcher(token);
 					if (matcher.find()) {
 						token = token.replace(matcher.group(0), " " + matcher.group(0) + " ");
-					} else {
 						
+						if (!matcher.group(0).contains(",")) {
+							token = token.replace(",", " , ");
+						}
+					} else {
+						token = token.replace(",", " , ");
+						token = token.replace("+", " + ");
+						
+						pattern = Pattern.compile(Regex.URL);
+						matcher = pattern.matcher(token);
+						if (matcher.find()) {
+							token = token.replace(matcher.group(0), " " + matcher.group(0) + " ");
+						}
 					}
 				}
 			}
@@ -90,12 +101,6 @@ public class WordTokenizer {
 				token = token.replace(",", " , ");
 				token = token.replace(".", " . ");
 			}
-			
-			if (token.startsWith(".") && !token.equals(".")) token = ". " + token.substring(1);
-			else if (token.startsWith(",") && !token.equals(",")) token = ", " + token.substring(1);
-			
-			if (token.endsWith(".") && !token.endsWith("..") && token.length() > 1) token = token.substring(0, token.length() - 1) + " .";
-			else if (token.endsWith(",") && token.length() > 1) token = token.substring(0, token.length() - 1) + " ,";
 			
 			words.addAll(StrUtil.tokenizeString(token, " "));
 		}
