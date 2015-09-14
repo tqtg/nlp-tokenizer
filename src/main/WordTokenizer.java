@@ -1,3 +1,4 @@
+
 package main;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import resources.Dictionay;
 import resources.Regex;
 
 public class WordTokenizer {
-	private static final String[] specialChar = {";", "…", "...", "&", "?", "!", "_", "=", "\"", "'", "\\", "<", ">", "[", "]", "{", "}", "‘", "’", "“", "”", "*", "~", "^", "|"};
+	private static final String[] specialChar = {";", "…", "...", "&", "?", "!", "_", "=", "\"", "'", "`", "\\", "<", ">", "[", "]", "{", "}", "‘", "’", "“", "”", "*", "~", "^", "|"};
 	private static final String[] eos = {".", "?", "!"};
 	
 	public static List<String> tokenize(String line) {
@@ -55,37 +56,43 @@ public class WordTokenizer {
 			} else {
 				token = token.replace("(", " ( ");
 				token = token.replace(")", " ) ");
-				token = token.replace("+", " + ");
-				token = token.replace("-", " - ");
 			}
 			
 			Pattern pattern = Pattern.compile(Regex.EMAIL);
 			Matcher matcher = pattern.matcher(token);
 			if (matcher.find()) {
-				token = token.replace(matcher.group(), " " + matcher.group() + " ");
+				token = token.replace(matcher.group(0), " " + matcher.group(0) + " ");
 			} else {
-				pattern = Pattern.compile(Regex.URL);
+				pattern = Pattern.compile(Regex.NUMBER);
 				matcher = pattern.matcher(token);
 				if (matcher.find()) {
-					token = token.replace(matcher.group(), " " + matcher.group() + " ");
+					token = token.replace(matcher.group(0), " " + matcher.group(0) + " ");
+					
+					if (!matcher.group(0).contains(",")) {
+						token = token.replace(",", " , ");
+					}
 				} else {
-					pattern = Pattern.compile(Regex.NUMBER);
+					token = token.replace(",", " , ");
+					token = token.replace("+", " + ");
+					token = token.replace("-", " - ");
+					
+					pattern = Pattern.compile(Regex.URL);
 					matcher = pattern.matcher(token);
 					if (matcher.find()) {
-						if (!matcher.group().contains(",")) {
-							token = token.replace(",", " , ");
-						}
-						if (!matcher.group().contains(".")) {
-							token = token.replace(".", " . ");
-						}
+						token = token.replace(matcher.group(0), " " + matcher.group(0) + " ");
 					} else {
-						token = token.replace(",", " , ");
+						
 					}
 				}
 			}
 			
-			if (token.startsWith(".") && !token.equals(".")) token = token.replace(".", " . ");
-			else if (token.startsWith(",") && !token.equals(",")) token = token.replace(",", " , ");
+			if (!token.contains(" ")) {
+				token = token.replace(",", " , ");
+				token = token.replace(".", " . ");
+			}
+			
+			if (token.startsWith(".") && !token.equals(".")) token = ". " + token.substring(1);
+			else if (token.startsWith(",") && !token.equals(",")) token = ", " + token.substring(1);
 			
 			if (token.endsWith(".") && !token.endsWith("..") && token.length() > 1) token = token.substring(0, token.length() - 1) + " .";
 			else if (token.endsWith(",") && token.length() > 1) token = token.substring(0, token.length() - 1) + " ,";

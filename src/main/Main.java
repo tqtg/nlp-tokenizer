@@ -138,7 +138,7 @@ public class Main {
 		System.out.println("Total words: " + words.size());
 		
 		//	Running time
-		System.out.println("Work tokenization time: " + String.valueOf(endWordTokTime - beginWordTokTime) + " ms");
+		System.out.println("Word tokenization time: " + String.valueOf(endWordTokTime - beginWordTokTime) + " ms");
 		System.out.println("Sentence tokenization time: " + String.valueOf(endSenTokTime - beginSenTokTime) + " ms");
 		System.out.println("=========");
 	}
