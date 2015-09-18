@@ -25,11 +25,6 @@ public class Tokenizer {
 				tokens.add(token);
 				continue;
 			}
-			
-			if (token.matches(Regex.URL)) {
-				tokens.add(token);
-				continue;
-			}
 
 			if (token.matches(Regex.EMAIL)) {
 				tokens.add(token);
@@ -51,12 +46,22 @@ public class Tokenizer {
 				continue;
 			}
 
+			if (token.matches(Regex.TIME)) {
+				tokens.add(token);
+				continue;
+			}
+			
 			if (token.matches(Regex.MONEY)) {
 				tokens.add(token);
 				continue;
 			}
 
 			if (token.matches(Regex.PHONE_NUMBER)) {
+				tokens.add(token);
+				continue;
+			}
+			
+			if (token.matches(Regex.URL)) {
 				tokens.add(token);
 				continue;
 			}
@@ -71,48 +76,49 @@ public class Tokenizer {
 				continue;
 			}
 			
-			Pattern pattern = Pattern.compile(Regex.URL);
+			boolean tokenContainsExp = false;
+			for (String e : Dictionay.exception) {
+				int i = token.indexOf(e);
+				if (i < 0) continue;
+				
+				tokens = recursive(tokens, token, i, i + e.length());
+				tokenContainsExp = true;
+				break;
+			}
+			if (tokenContainsExp) continue;
+
+			Pattern pattern = Pattern.compile(Regex.EMAIL);
 			Matcher matcher = pattern.matcher(token);
 			if (matcher.find()) {
-				tokens.addAll(tokenize(token.substring(0, matcher.start())));
-				tokens.addAll(tokenize(token.substring(matcher.start(), matcher.end())));
-				tokens.addAll(tokenize(token.substring(matcher.end())));
-				continue;
-			}
-			
-			pattern = Pattern.compile(Regex.EMAIL);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens.addAll(tokenize(token.substring(0, matcher.start())));
-				tokens.addAll(tokenize(token.substring(matcher.start(), matcher.end())));
-				tokens.addAll(tokenize(token.substring(matcher.end())));
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
 				continue;
 			}
 			
 			pattern = Pattern.compile(Regex.FULL_DATE);
 			matcher = pattern.matcher(token);
 			if (matcher.find()) {
-				tokens.addAll(tokenize(token.substring(0, matcher.start())));
-				tokens.addAll(tokenize(token.substring(matcher.start(), matcher.end())));
-				tokens.addAll(tokenize(token.substring(matcher.end())));
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
 				continue;
 			}
 			
 			pattern = Pattern.compile(Regex.MONTH);
 			matcher = pattern.matcher(token);
 			if (matcher.find()) {
-				tokens.addAll(tokenize(token.substring(0, matcher.start())));
-				tokens.addAll(tokenize(token.substring(matcher.start(), matcher.end())));
-				tokens.addAll(tokenize(token.substring(matcher.end())));
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
 				continue;
 			}
 			
 			pattern = Pattern.compile(Regex.DATE);
 			matcher = pattern.matcher(token);
 			if (matcher.find()) {
-				tokens.addAll(tokenize(token.substring(0, matcher.start())));
-				tokens.addAll(tokenize(token.substring(matcher.start(), matcher.end())));
-				tokens.addAll(tokenize(token.substring(matcher.end())));
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
+				continue;
+			}
+			
+			pattern = Pattern.compile(Regex.TIME);
+			matcher = pattern.matcher(token);
+			if (matcher.find()) {
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
 				continue;
 			}
 			
@@ -120,27 +126,29 @@ public class Tokenizer {
 			pattern = Pattern.compile(Regex.MONEY);
 			matcher = pattern.matcher(token);
 			if (matcher.find()) {
-				tokens.addAll(tokenize(token.substring(0, matcher.start())));
-				tokens.addAll(tokenize(token.substring(matcher.start(), matcher.end())));
-				tokens.addAll(tokenize(token.substring(matcher.end())));
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
 				continue;
 			}
 			
 			pattern = Pattern.compile(Regex.PHONE_NUMBER);
 			matcher = pattern.matcher(token);
 			if (matcher.find()) {
-				tokens.addAll(tokenize(token.substring(0, matcher.start())));
-				tokens.addAll(tokenize(token.substring(matcher.start(), matcher.end())));
-				tokens.addAll(tokenize(token.substring(matcher.end())));
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
+				continue;
+			}
+			
+			pattern = Pattern.compile(Regex.URL);
+			matcher = pattern.matcher(token);
+			if (matcher.find()) {
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
 				continue;
 			}
 			
 			pattern = Pattern.compile(Regex.NUMBER);
 			matcher = pattern.matcher(token);
 			if (matcher.find()) {
-				tokens.addAll(tokenize(token.substring(0, matcher.start())));
-				tokens.addAll(tokenize(token.substring(matcher.start(), matcher.end())));
-				tokens.addAll(tokenize(token.substring(matcher.end())));
+				String[] replaceChar = {"-", "+"};
+				tokens = recursive(tokens, token, matcher.start(), matcher.end(), replaceChar);
 				continue;
 			}
 			
@@ -148,9 +156,7 @@ public class Tokenizer {
 				pattern = Pattern.compile(Regex.PUNCTUATION);
 				matcher = pattern.matcher(token);
 				if (matcher.find()) {
-					tokens.addAll(tokenize(token.substring(0, matcher.start())));
-					tokens.addAll(tokenize(token.substring(matcher.start(), matcher.end())));
-					tokens.addAll(tokenize(token.substring(matcher.end())));
+					tokens = recursive(tokens, token, matcher.start(), matcher.end());
 					continue;
 				}
 			}
@@ -161,7 +167,31 @@ public class Tokenizer {
 		return tokens;
 	}
 	
-	public static boolean hasPunctuation(String s) {
+	private static List<String> recursive(List<String> tokens, String token, int beginMatch, int endMatch) {
+		tokens.addAll(tokenize(token.substring(0, beginMatch)));
+		tokens.addAll(tokenize(token.substring(beginMatch, endMatch)));
+		tokens.addAll(tokenize(token.substring(endMatch)));
+		
+		return tokens;
+	}
+	
+	private static List<String> recursive(List<String> tokens, String token, int beginMatch, int endMatch, String[] replaceChar) {
+		String beforeMatch = token.substring(0, beginMatch);
+		String afterMatch = token.substring(endMatch);
+		
+		for (String c : replaceChar) {
+			beforeMatch = beforeMatch.replace(c, " " + c + " ");
+			afterMatch = afterMatch.replace(c, " " + c + " ");
+		}
+		
+		tokens.addAll(tokenize(beforeMatch));
+		tokens.addAll(tokenize(token.substring(beginMatch, endMatch)));
+		tokens.addAll(tokenize(afterMatch));
+		
+		return tokens;
+	}
+	
+	private static boolean hasPunctuation(String s) {
 		for (int i = 0; i < s.length(); i++) {
 			if (!Character.isAlphabetic(s.charAt(i)) && !Character.isDigit(s.charAt(i)))
 				return true;
