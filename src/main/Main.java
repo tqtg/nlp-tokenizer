@@ -16,7 +16,6 @@ import org.kohsuke.args4j.CmdLineParser;
 
 import jmdn.base.util.filesystem.FileLoader;
 import jmdn.base.util.filesystem.FileSaver;
-import jmdn.base.util.string.StrUtil;
 
 public class Main {
 	private static final String ENCODING = "UTF8";
@@ -60,7 +59,7 @@ public class Main {
 		}
 		
 		long endTime = System.currentTimeMillis();
-		System.out.println("\nTotal runtime: " + String.valueOf(endTime - beginTime) + " ms");
+		System.out.println("\nTotal running time: " + String.valueOf(endTime - beginTime) + " ms");
 	}
 	
 	public static void tokenizeDirectory(File dir) {
@@ -82,64 +81,48 @@ public class Main {
 		List<String> dataLines = FileLoader.readFile(filename, ENCODING);
 		System.out.println("Total lines: " + dataLines.size());
 		
-		//	Words tokenization
-		long beginWordTokTime = System.currentTimeMillis();
+		// Tokenization
 		List<String> tokens = new ArrayList<>();
+		List<String> sentences = new ArrayList<>();
+				
+		long beginTime = System.currentTimeMillis();
 		for (String line : dataLines) {
-			tokens.addAll(WordTokenizer.tokenize(StrUtil.normalizeString(line)));
+			List<String> lineTokens = Tokenizer.tokenize(line);
+			tokens.addAll(lineTokens);
+			sentences.addAll(Tokenizer.joinSentences(lineTokens));
 		}
-		long endWordTokTime = System.currentTimeMillis();
+		long endTime = System.currentTimeMillis();
 		
-		//	Sentences tokenization
-		long beginSenTokTime = System.currentTimeMillis();
-		List<String> sentences = SentenceTokenizer.tokenizeSentence(tokens);
-		Iterator<String> itr = sentences.iterator();
-		while (itr.hasNext()) {
-			if (itr.next().length() == 0) itr.remove();
+		//	Count words frequency
+		Map<String, Integer> wordFrequencyMap = new HashMap<>();
+		for (String token : tokens) {
+			if (!wordFrequencyMap.containsKey(token)) wordFrequencyMap.put(token, 1);
+			else wordFrequencyMap.put(token, wordFrequencyMap.get(token) + 1);
 		}
-		long endSenTokTime = System.currentTimeMillis();
 		
-		List<String> sentencesWithSeperatedTokens = SentenceTokenizer.tokenizeSentenceAndWord(tokens);
+		Map<String, Integer> sortedMap = sortByComparator(wordFrequencyMap);
+		List<String> wordFrequency = new ArrayList<>();
+		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+			wordFrequency.add(entry.getKey() + " " + entry.getValue());
+		}
 		
+		// Get filename
 		int i = filename.lastIndexOf("/");
 		if (i < 0) i = 0; 
 		filename = filename.substring(i, filename.lastIndexOf("."));
-		
-		
-		
-		//	Write sentences to file
-		FileSaver.saveListString(sentences, "../output/" + filename + "_sentences.txt", ENCODING);
-		FileSaver.saveListString(sentencesWithSeperatedTokens, "../output/" + filename + "_sentencesWithSeperatedTokens.txt", ENCODING);
-		System.out.println("Total sentences: " + sentences.size());
-		
-		//	Write tokens to file
-		itr = tokens.iterator();
-		while (itr.hasNext()) {
-			String token = itr.next();
-			if (token.equals("EOS")) itr.remove();
-		}
+
+		// Save result to files
 		FileSaver.saveListString(tokens, "../output/" + filename + "_tokens.txt", ENCODING);
 		System.out.println("Total tokens: " + tokens.size());
 		
-		//	Count frequency of words
-		Map<String, Integer> wordsFrequency = new HashMap<>();
-		for (String token : tokens) {
-			if (!wordsFrequency.containsKey(token)) wordsFrequency.put(token, 1);
-			else wordsFrequency.put(token, wordsFrequency.get(token) + 1);
-		}
-		Map<String, Integer> sortedMap = sortByComparator(wordsFrequency);
-		List<String> words = new ArrayList<>();
-		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
-			words.add(entry.getKey() + " " + entry.getValue());
-		}
+		FileSaver.saveListString(sentences, "../output/" + filename + "_sentences.txt", ENCODING);
+		System.out.println("Total sentences: " + sentences.size());
 		
-		//	Write words frequency to file
-		FileSaver.saveListString(words, "../output/" + filename + "_wordsFrequency.txt", ENCODING);
-		System.out.println("Total words: " + words.size());
+		FileSaver.saveListString(wordFrequency, "../output/" + filename + "_frequency.txt", ENCODING);
+		System.out.println("Total words: " + wordFrequency.size());
 		
 		//	Running time
-		System.out.println("Word tokenization time: " + String.valueOf(endWordTokTime - beginWordTokTime) + " ms");
-		System.out.println("Sentence tokenization time: " + String.valueOf(endSenTokTime - beginSenTokTime) + " ms");
+		System.out.println("Tokenization time: " + String.valueOf(endTime - beginTime) + "ms");
 		System.out.println("=========");
 	}
 	
