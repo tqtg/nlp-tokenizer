@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class Regex {
 	
+	public static final String ELLIPSIS = "\\.{2,}";
+	
 	public static final String EMAIL = "([\\w\\d_\\.-]+)@(([\\d\\w-]+)\\.)*([\\d\\w-]+)";
 	
 	public static final String FULL_DATE = "(0?[1-9]|[12][0-9]|3[01])(\\/|-|\\.)(0?[1-9]|1[012])((\\/|-|\\.)(19|20)\\d\\d)";
@@ -19,13 +21,13 @@ public class Regex {
 	
 	public static final String PHONE_NUMBER = "(\\(?\\+\\d{1,2}\\)?[\\s\\.-]?)?\\d{2,}[\\s\\.-]?\\d{3,}[\\s\\.-]?\\d{3,}";
 	
-	public static final String URL = "(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?(\\?[\\w\\d=]+)?";
+	public static final String URL = "(https?:\\/\\/)?([a-z][\\w-~]*(\\.[\\w-~]+)+|\\d{1,3}(\\.\\d{1,3}){3})(:\\d{1,5})?(\\/[\\w-~=\\?]*)*";
 	
 	public static final String NUMBER = "[-+]?\\d+([\\.,]\\d+)*(%)?";
 	
-	public static final String PUNCTUATION = ",|\\.+|:|\\?|!|;|-|_|\"|'|\\||\\(|\\)|\\[|\\]|\\{|\\}|⟨|⟩|«|»|\\\\|/|\\‘|\\’|\\“|\\”|…";
+	public static final String PUNCTUATION = ",|\\.|:|\\?|!|;|-|_|\"|'|\\||\\(|\\)|\\[|\\]|\\{|\\}|⟨|⟩|«|»|\\\\|\\/|\\‘|\\’|\\“|\\”|…";
 	
-	public static final String NOT_EOS_PUNCTUATION = "(…|\\.{2,}|,|;|\\(|\\)|\\[|\\]|\\{|\\}|⟨|⟩|«|»|\"|'|:|\\||\\\\|/|\\‘|\\’|\\“|\\”)";
+	public static final String SPECIAL_CHAR = "\\~|\\@|\\#|\\^|\\&|\\*+|<|>";
 	
 	public static final String EOS_PUNCTUATION = "(\\.+|\\?|!)";
 	

@@ -13,12 +13,17 @@ public class Tokenizer {
 	
 	public static List<String> tokenize(String s) {
 		List<String> tokens = new ArrayList<>();
-		
 		List<String> tempTokens = StrUtil.tokenizeString(s);
-		for (String token : tempTokens) {
-			
-			if (!hasPunctuation(token)) {
+		
+		for (String token : tempTokens) {	
+			if (token.length() == 1 || !hasPunctuation(token)) {
 				tokens.add(token);
+				continue;
+			}
+			
+			if (token.endsWith(",")) {
+				tokens.addAll(tokenize(token.substring(0, token.length() - 1)));
+				tokens.add(",");
 				continue;
 			}
 			
@@ -31,7 +36,12 @@ public class Tokenizer {
 				tokens.add(token);
 				continue;
 			}
-
+			
+			if (token.matches(Regex.ELLIPSIS)) {
+				tokens.add(token);
+				continue;
+			}
+			
 			if (token.matches(Regex.EMAIL)) {
 				tokens.add(token);
 				continue;
@@ -41,7 +51,7 @@ public class Tokenizer {
 				tokens.add(token);
 				continue;
 			}
-
+			
 			if (token.matches(Regex.FULL_DATE)) {
 				tokens.add(token);
 				continue;
@@ -82,19 +92,31 @@ public class Tokenizer {
 				continue;
 			}
 			
+			if (token.matches(Regex.SPECIAL_CHAR)) {
+				tokens.add(token);
+				continue;
+			}
+			
 			boolean tokenContainsExp = false;
 			for (String e : Dictionay.exception) {
 				int i = token.indexOf(e);
 				if (i < 0) continue;
 				
-				tokens = recursive(tokens, token, i, i + e.length());
 				tokenContainsExp = true;
+				tokens = recursive(tokens, token, i, i + e.length());
 				break;
 			}
 			if (tokenContainsExp) continue;
 
 			Pattern pattern = Pattern.compile(Regex.EMAIL);
 			Matcher matcher = pattern.matcher(token);
+			if (matcher.find()) {
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
+				continue;
+			}
+
+			pattern = Pattern.compile(Regex.EMAIL);
+			matcher = pattern.matcher(token);
 			if (matcher.find()) {
 				tokens = recursive(tokens, token, matcher.start(), matcher.end());
 				continue;
@@ -165,6 +187,13 @@ public class Tokenizer {
 				continue;
 			}
 
+			pattern = Pattern.compile(Regex.SPECIAL_CHAR);
+			matcher = pattern.matcher(token);
+			if (matcher.find()) {
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
+				continue;
+			}
+			
 			tokens.add(token);
 		}
 		

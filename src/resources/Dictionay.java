@@ -12,6 +12,5 @@ public class Dictionay {
 	static {
 		abbreviation = FileLoader.readFile("../dictionary/abbreviation.dic", ENCODING);
 		exception = FileLoader.readFile("../dictionary/exception.dic", ENCODING);
-	}
-	
+	}	
 }
