@@ -19,7 +19,7 @@ public class Regex {
 	
 	public static final String PHONE_NUMBER = "(\\(?\\+\\d{1,2}\\)?[\\s\\.-]?)?\\d{2,}[\\s\\.-]?\\d{3,}[\\s\\.-]?\\d{3,}";
 	
-	public static final String URL = "(https?://)?[\\w-~]+(\\.[\\w-~]+)+(:\\d{1,5})?(/[\\w-~]*)*";
+	public static final String URL = "(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?(\\?[\\w\\d=]+)?";
 	
 	public static final String NUMBER = "[-+]?\\d+([\\.,]\\d+)*(%)?";
 	

@@ -16,6 +16,12 @@ public class Tokenizer {
 		
 		List<String> tempTokens = StrUtil.tokenizeString(s);
 		for (String token : tempTokens) {
+			
+			if (!hasPunctuation(token)) {
+				tokens.add(token);
+				continue;
+			}
+			
 			if (Dictionay.abbreviation.contains(token)) {
 				tokens.add(token);
 				continue;
@@ -27,6 +33,11 @@ public class Tokenizer {
 			}
 
 			if (token.matches(Regex.EMAIL)) {
+				tokens.add(token);
+				continue;
+			}
+			
+			if (token.matches(Regex.URL)) {
 				tokens.add(token);
 				continue;
 			}
@@ -60,11 +71,6 @@ public class Tokenizer {
 				tokens.add(token);
 				continue;
 			}
-			
-			if (token.matches(Regex.URL)) {
-				tokens.add(token);
-				continue;
-			}
 
 			if (token.matches(Regex.NUMBER)) {
 				tokens.add(token);
@@ -89,6 +95,13 @@ public class Tokenizer {
 
 			Pattern pattern = Pattern.compile(Regex.EMAIL);
 			Matcher matcher = pattern.matcher(token);
+			if (matcher.find()) {
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
+				continue;
+			}
+			
+			pattern = Pattern.compile(Regex.URL);
+			matcher = pattern.matcher(token);
 			if (matcher.find()) {
 				tokens = recursive(tokens, token, matcher.start(), matcher.end());
 				continue;
@@ -137,13 +150,6 @@ public class Tokenizer {
 				continue;
 			}
 			
-			pattern = Pattern.compile(Regex.URL);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-			
 			pattern = Pattern.compile(Regex.NUMBER);
 			matcher = pattern.matcher(token);
 			if (matcher.find()) {
@@ -152,13 +158,11 @@ public class Tokenizer {
 				continue;
 			}
 			
-			if (hasPunctuation(token)) {
-				pattern = Pattern.compile(Regex.PUNCTUATION);
-				matcher = pattern.matcher(token);
-				if (matcher.find()) {
-					tokens = recursive(tokens, token, matcher.start(), matcher.end());
-					continue;
-				}
+			pattern = Pattern.compile(Regex.PUNCTUATION);
+			matcher = pattern.matcher(token);
+			if (matcher.find()) {
+				tokens = recursive(tokens, token, matcher.start(), matcher.end());
+				continue;
 			}
 
 			tokens.add(token);
