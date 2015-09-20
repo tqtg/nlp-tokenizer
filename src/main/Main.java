@@ -16,11 +16,17 @@ import org.kohsuke.args4j.CmdLineParser;
 
 import jmdn.base.util.filesystem.FileLoader;
 import jmdn.base.util.filesystem.FileSaver;
+import resources.Regex;
 
 public class Main {
 	private static final String ENCODING = "UTF8";
 	
 	public static void main(String[] args) {
+//		String s = "–size";
+//		Util.testFoundByRegex(s, Regex.SPECIAL_CHAR);
+//		Util.findMatchedRegex(s);
+//		System.out.println("Done");
+		
 		CmdOption cmdOption = new CmdOption();
 		CmdLineParser parser = new CmdLineParser(cmdOption);
 

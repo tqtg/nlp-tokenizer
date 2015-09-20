@@ -1,8 +1,5 @@
 package resources;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Regex {
 	
 	public static final String ELLIPSIS = "\\.{2,}";
@@ -27,20 +24,8 @@ public class Regex {
 	
 	public static final String PUNCTUATION = ",|\\.|:|\\?|!|;|-|_|\"|'|\\||\\(|\\)|\\[|\\]|\\{|\\}|⟨|⟩|«|»|\\\\|\\/|\\‘|\\’|\\“|\\”|…";
 	
-	public static final String SPECIAL_CHAR = "\\~|\\@|\\#|\\^|\\&|\\*+|<|>";
+	public static final String SPECIAL_CHAR = "\\~|\\@|\\#|\\^|\\&|\\*|\\+|\\-|\\–|<|>|\\|";
 	
 	public static final String EOS_PUNCTUATION = "(\\.+|\\?|!)";
 	
-	
-	public static void testRegex(String s, String regex) {
-		System.out.println("Test string: " + s);
-		
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(s);
-		if (matcher.find()) {
-			System.out.println(s.substring(0, matcher.start()));
-			System.out.println(s.substring(matcher.start(), matcher.end()));
-			System.out.println(s.substring(matcher.end()));
-		}
-	}
 }

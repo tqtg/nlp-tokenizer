@@ -11,11 +11,19 @@ import resources.Regex;
 
 public class Tokenizer {
 	// whitespace and tab character
-	private static final String delemiter = "  	";
+	private static final String[] delimiterChars = {"\\u0020", "\\u00a0", "\\u0009"};
+	private static String delimiter;
+	
+	static {
+		delimiter = "";
+		for (String hex : delimiterChars) {
+			delimiter += Util.hex2Char(hex);
+		}
+	}
 	
 	public static List<String> tokenize(String s) {
 		List<String> tokens = new ArrayList<>();
-		List<String> tempTokens = StrUtil.tokenizeString(s, delemiter);
+		List<String> tempTokens = StrUtil.tokenizeString(s, delimiter);
 		
 		for (String token : tempTokens) {	
 			if (token.length() == 1 || !hasPunctuation(token)) {
@@ -85,8 +93,8 @@ public class Tokenizer {
 				Matcher matcher = pattern.matcher(token);
 				
 				if (matcher.find()) {
-					// index of number regex
-					if (i == 9) {
+					if (i == 9) // index of number regex
+					{
 						String[] replaceChar = {"-", "+"};
 						tokens = recursive(tokens, token, matcher.start(), matcher.end(), replaceChar);
 					} else {
