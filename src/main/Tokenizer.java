@@ -32,70 +32,40 @@ public class Tokenizer {
 				continue;
 			}
 			
+			if (token.endsWith(".") && Character.isAlphabetic(token.charAt(token.length() - 2))) {
+				tokens.addAll(tokenize(token.substring(0, token.length() - 1)));
+				tokens.add(".");
+				continue;
+			}
+			
 			if (Dictionay.exception.contains(token)) {
 				tokens.add(token);
 				continue;
 			}
 			
-			if (token.matches(Regex.ELLIPSIS)) {
-				tokens.add(token);
-				continue;
-			}
+			List<String> regexes = new ArrayList<>();
+			regexes.add(Regex.ELLIPSIS);
+			regexes.add(Regex.EMAIL);
+			regexes.add(Regex.URL);
+			regexes.add(Regex.FULL_DATE);
+			regexes.add(Regex.MONTH);
+			regexes.add(Regex.DATE);
+			regexes.add(Regex.TIME);
+			regexes.add(Regex.MONEY);
+			regexes.add(Regex.PHONE_NUMBER);
+			regexes.add(Regex.NUMBER);
+			regexes.add(Regex.PUNCTUATION);
+			regexes.add(Regex.SPECIAL_CHAR);
 			
-			if (token.matches(Regex.EMAIL)) {
-				tokens.add(token);
-				continue;
+			boolean matching = false;
+			for (String regex : regexes) {
+				if (token.matches(regex)) {
+					tokens.add(token);
+					matching = true;
+					break;
+				}
 			}
-			
-			if (token.matches(Regex.URL)) {
-				tokens.add(token);
-				continue;
-			}
-			
-			if (token.matches(Regex.FULL_DATE)) {
-				tokens.add(token);
-				continue;
-			}
-			
-			if (token.matches(Regex.MONTH)) {
-				tokens.add(token);
-				continue;
-			}
-			
-			if (token.matches(Regex.DATE)) {
-				tokens.add(token);
-				continue;
-			}
-
-			if (token.matches(Regex.TIME)) {
-				tokens.add(token);
-				continue;
-			}
-			
-			if (token.matches(Regex.MONEY)) {
-				tokens.add(token);
-				continue;
-			}
-
-			if (token.matches(Regex.PHONE_NUMBER)) {
-				tokens.add(token);
-				continue;
-			}
-
-			if (token.matches(Regex.NUMBER)) {
-				tokens.add(token);
-				continue;
-			}
-			
-			if (token.matches(Regex.PUNCTUATION)) {
-				tokens.add(token);
-				continue;
-			}
-			
-			if (token.matches(Regex.SPECIAL_CHAR)) {
-				tokens.add(token);
-				continue;
-			}
+			if (matching) continue;
 			
 			boolean tokenContainsExp = false;
 			for (String e : Dictionay.exception) {
@@ -108,93 +78,26 @@ public class Tokenizer {
 			}
 			if (tokenContainsExp) continue;
 
-			Pattern pattern = Pattern.compile(Regex.EMAIL);
-			Matcher matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-
-			pattern = Pattern.compile(Regex.EMAIL);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-			
-			pattern = Pattern.compile(Regex.URL);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
+			for (int i = 0; i < regexes.size(); i++) {
+				Pattern pattern = Pattern.compile(regexes.get(i));
+				Matcher matcher = pattern.matcher(token);
+				
+				if (matcher.find()) {
+					// index of number regex
+					if (i == 9) {
+						String[] replaceChar = {"-", "+"};
+						tokens = recursive(tokens, token, matcher.start(), matcher.end(), replaceChar);
+					} else {
+						tokens = recursive(tokens, token, matcher.start(), matcher.end());
+					}
+					
+					matching = true;
+					break;
+				}
 			}
 			
-			pattern = Pattern.compile(Regex.FULL_DATE);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-			
-			pattern = Pattern.compile(Regex.MONTH);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-			
-			pattern = Pattern.compile(Regex.DATE);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-			
-			pattern = Pattern.compile(Regex.TIME);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-			
-			
-			pattern = Pattern.compile(Regex.MONEY);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-			
-			pattern = Pattern.compile(Regex.PHONE_NUMBER);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-			
-			pattern = Pattern.compile(Regex.NUMBER);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				String[] replaceChar = {"-", "+"};
-				tokens = recursive(tokens, token, matcher.start(), matcher.end(), replaceChar);
-				continue;
-			}
-			
-			pattern = Pattern.compile(Regex.PUNCTUATION);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-
-			pattern = Pattern.compile(Regex.SPECIAL_CHAR);
-			matcher = pattern.matcher(token);
-			if (matcher.find()) {
-				tokens = recursive(tokens, token, matcher.start(), matcher.end());
-				continue;
-			}
-			
-			tokens.add(token);
+			if (matching) continue;
+			else tokens.add(token);
 		}
 		
 		return tokens;
