@@ -10,10 +10,12 @@ import resources.Dictionay;
 import resources.Regex;
 
 public class Tokenizer {
+	// whitespace and tab character
+	private static final String delemiter = "  	";
 	
 	public static List<String> tokenize(String s) {
 		List<String> tokens = new ArrayList<>();
-		List<String> tempTokens = StrUtil.tokenizeString(s);
+		List<String> tempTokens = StrUtil.tokenizeString(s, delemiter);
 		
 		for (String token : tempTokens) {	
 			if (token.length() == 1 || !hasPunctuation(token)) {
