@@ -17,7 +17,7 @@ public class Tokenizer {
 	static {
 		delimiter = "";
 		for (String hex : delimiterChars) {
-			delimiter += Util.hex2Char(hex);
+			delimiter += Utils.hex2Char(hex);
 		}
 	}
 	

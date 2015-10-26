@@ -2,21 +2,12 @@ package main;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 
 import jmdn.base.util.filesystem.FileLoader;
-import jmdn.base.util.filesystem.FileSaver;
-import resources.Regex;
 
 public class Main {
 	private static final String ENCODING = "UTF8";
@@ -84,75 +75,85 @@ public class Main {
 	}
 	
 	public static void tokenizeFile(String filename) {
+		// Read data
 		List<String> dataLines = FileLoader.readFile(filename, ENCODING);
 		System.out.println("Total lines: " + dataLines.size());
 		
-		// Tokenization
+		// Get absolute filename
+		int index = filename.lastIndexOf("/");
+		if (index < 0) index = 0; 
+		filename = filename.substring(index, filename.lastIndexOf("."));
+		
 		List<String> tokens = new ArrayList<>();
 		List<String> sentences = new ArrayList<>();
-				
+		
 		long beginTime = System.currentTimeMillis();
-		for (String line : dataLines) {
-			List<String> lineTokens = Tokenizer.tokenize(line);
+		for (int i = 0; i < dataLines.size(); i++) {
+			List<String> lineTokens = Tokenizer.tokenize(dataLines.get(i));
 			tokens.addAll(lineTokens);
 			sentences.addAll(Tokenizer.joinSentences(lineTokens));
+			
+			if (i % 1000 == 0) {
+				System.out.println(i + " lines processed");
+				Utils.appendFile(tokens, "../output/" + filename + "_tokens.txt");
+				Utils.appendFile(sentences, "../output/" + filename + "_sentences.txt");
+				tokens.clear();
+				sentences.clear();
+			}
 		}
 		long endTime = System.currentTimeMillis();
 		
 		//	Count words frequency
-		Map<String, Integer> wordFrequencyMap = new HashMap<>();
-		for (String token : tokens) {
-			if (!wordFrequencyMap.containsKey(token)) wordFrequencyMap.put(token, 1);
-			else wordFrequencyMap.put(token, wordFrequencyMap.get(token) + 1);
-		}
+//		Map<String, Integer> wordFrequencyMap = new HashMap<>();
+//		for (String token : tokens) {
+//			if (!wordFrequencyMap.containsKey(token)) wordFrequencyMap.put(token, 1);
+//			else wordFrequencyMap.put(token, wordFrequencyMap.get(token) + 1);
+//		}
+//		
+//		Map<String, Integer> sortedMap = sortByComparator(wordFrequencyMap);
+//		List<String> wordFrequency = new ArrayList<>();
+//		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+//			wordFrequency.add(entry.getKey() + " " + entry.getValue());
+//		}
 		
-		Map<String, Integer> sortedMap = sortByComparator(wordFrequencyMap);
-		List<String> wordFrequency = new ArrayList<>();
-		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
-			wordFrequency.add(entry.getKey() + " " + entry.getValue());
-		}
 		
-		// Get filename
-		int i = filename.lastIndexOf("/");
-		if (i < 0) i = 0; 
-		filename = filename.substring(i, filename.lastIndexOf("."));
 
 		// Save result to files
-		FileSaver.saveListString(tokens, "../output/" + filename + "_tokens.txt", ENCODING);
-		System.out.println("Total tokens: " + tokens.size());
+//		FileSaver.saveListString(tokens, "../output/" + filename + "_tokens.txt", ENCODING);
+//		System.out.println("Total tokens: " + tokens.size());
 		
-		FileSaver.saveListString(sentences, "../output/" + filename + "_sentences.txt", ENCODING);
-		System.out.println("Total sentences: " + sentences.size());
+//		FileSaver.saveListString(sentences, "../output/" + filename + "_sentences.txt", ENCODING);
+//		System.out.println("Total sentences: " + sentences.size());
 		
-		FileSaver.saveListString(wordFrequency, "../output/" + filename + "_frequency.txt", ENCODING);
-		System.out.println("Total words: " + wordFrequency.size());
+//		FileSaver.saveListString(wordFrequency, "../output/" + filename + "_frequency.txt", ENCODING);
+//		System.out.println("Total words: " + wordFrequency.size());
 		
 		//	Running time
 		System.out.println("Tokenization time: " + String.valueOf(endTime - beginTime) + "ms");
 		System.out.println("=========");
 	}
 	
-	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap) {
-		// Convert Map to List
-		List<Map.Entry<String, Integer>> list = 
-			new LinkedList<Map.Entry<String, Integer>>(unsortMap.entrySet());
-
-		// Sort list with comparator, to compare the Map values
-		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-			public int compare(Map.Entry<String, Integer> o1,
-                                           Map.Entry<String, Integer> o2) {
-				return (o2.getValue()).compareTo(o1.getValue());
-			}
-		});
-
-		// Convert sorted map back to a Map
-		Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
-		for (Iterator<Map.Entry<String, Integer>> it = list.iterator(); it.hasNext();) {
-			Map.Entry<String, Integer> entry = it.next();
-			sortedMap.put(entry.getKey(), entry.getValue());
-		}
-		return sortedMap;
-	}
+//	private static Map<String, Integer> sortByComparator(Map<String, Integer> unsortMap) {
+//		// Convert Map to List
+//		List<Map.Entry<String, Integer>> list = 
+//			new LinkedList<Map.Entry<String, Integer>>(unsortMap.entrySet());
+//
+//		// Sort list with comparator, to compare the Map values
+//		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+//			public int compare(Map.Entry<String, Integer> o1,
+//                                           Map.Entry<String, Integer> o2) {
+//				return (o2.getValue()).compareTo(o1.getValue());
+//			}
+//		});
+//
+//		// Convert sorted map back to a Map
+//		Map<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
+//		for (Iterator<Map.Entry<String, Integer>> it = list.iterator(); it.hasNext();) {
+//			Map.Entry<String, Integer> entry = it.next();
+//			sortedMap.put(entry.getKey(), entry.getValue());
+//		}
+//		return sortedMap;
+//	}
 
 
 	public static void showHelp(CmdLineParser parser) {

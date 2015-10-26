@@ -2,10 +2,10 @@
 
 Run this command in lib folder:
  - For Linux: <br/>
- `java -classpath args4j-2.0.6.jar:jmdn-base.jar:tokenizer.jar main.Main -filename ../data/chudu24.txt`
+ `java -classpath args4j-2.0.6.jar:jmdn-base.jar:tokenizer.jar main.Main -filename ../data/sample.txt`
 
  - For Windows: <br/>
- `java -classpath args4j-2.0.6.jar;jmdn-base.jar;tokenizer.jar main.Main -filename ..\data\chudu24.txt`
+ `java -classpath args4j-2.0.6.jar;jmdn-base.jar;tokenizer.jar main.Main -filename ..\data\sample.txt`
 
 **NOTE:** This project is built in Java 1.7
 
